@@ -1,7 +1,6 @@
 package com.fiap.tc.adapters.driven.infrastructure.persistence.repositories;
 
 import com.fiap.tc.adapters.driven.infrastructure.persistence.entities.OrderEntity;
-import com.fiap.tc.core.domain.enums.OrderStatus;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,7 +1,6 @@
-package com.fiap.tc.core.usecase.product;
+package com.fiap.tc.core.application.usecase.product;
 
 import br.com.six2six.fixturefactory.Fixture;
-import com.fiap.tc.core.application.usecase.product.RegisterProductImagesUseCase;
 import com.fiap.tc.core.domain.entities.Product;
 import com.fiap.tc.adapters.driver.presentation.requests.RegisterProductImagesRequest;
 import com.fiap.tc.core.application.ports.out.product.RegisterProductImagesOutputPort;

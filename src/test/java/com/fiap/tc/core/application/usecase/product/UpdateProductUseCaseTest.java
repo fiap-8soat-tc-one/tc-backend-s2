@@ -1,16 +1,16 @@
-package com.fiap.tc.core.usecase.product;
+package com.fiap.tc.core.application.usecase.product;
 
 import br.com.six2six.fixturefactory.Fixture;
-import com.fiap.tc.core.application.usecase.product.LoadProductUseCase;
 import com.fiap.tc.core.domain.entities.Product;
-import com.fiap.tc.core.application.ports.out.product.LoadProductOutputPort;
+import com.fiap.tc.adapters.driver.presentation.requests.ProductRequest;
+import com.fiap.tc.core.application.ports.out.product.UpdateProductOutputPort;
 import com.fiap.tc.fixture.FixtureTest;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.UUID;
@@ -19,30 +19,31 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class LoadProductUseCaseTest extends FixtureTest {
+public class UpdateProductUseCaseTest extends FixtureTest {
 
     public static final UUID ID_PRODUCT = UUID.randomUUID();
-
     @Mock
-    private LoadProductOutputPort loadProductOutputPort;
+    private UpdateProductOutputPort updateProductOutputPort;
 
     @InjectMocks
-    private LoadProductUseCase loadProductUseCase;
+    private UpdateProductUseCase updateProductUseCase;
 
     private Product product;
+
+    private ProductRequest request;
 
     @BeforeEach
     public void setUp() {
         product = Fixture.from(Product.class).gimme("valid");
+        request = Fixture.from(ProductRequest.class).gimme("valid");
     }
 
     @Test
-    public void loadProductTest() {
-        when(loadProductOutputPort.load(ID_PRODUCT)).thenReturn(product);
-
-        var productResult = loadProductUseCase.load(ID_PRODUCT);
-        Assertions.assertEquals(product, productResult);
-        verify(loadProductOutputPort).load(ID_PRODUCT);
+    public void updateProductTest() {
+        when(updateProductOutputPort.update(Mockito.any())).thenReturn(product);
+        updateProductUseCase.update(product);
+        verify(updateProductOutputPort).update(Mockito.any());
     }
+
 
 }

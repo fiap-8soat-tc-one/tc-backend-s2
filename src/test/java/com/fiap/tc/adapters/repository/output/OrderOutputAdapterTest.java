@@ -2,11 +2,11 @@ package com.fiap.tc.adapters.repository.output;
 
 import br.com.six2six.fixturefactory.Fixture;
 import com.fiap.tc.adapters.driven.infrastructure.outputs.OrderOutputAdapter;
-import com.fiap.tc.adapters.driven.infrastructure.persistence.repositories.OrderRepository;
 import com.fiap.tc.adapters.driven.infrastructure.persistence.entities.OrderEntity;
-import com.fiap.tc.core.domain.exceptions.NotFoundException;
-import com.fiap.tc.core.domain.enums.OrderStatus;
+import com.fiap.tc.adapters.driven.infrastructure.persistence.repositories.OrderRepository;
 import com.fiap.tc.adapters.driver.presentation.requests.OrderStatusRequest;
+import com.fiap.tc.core.domain.enums.OrderStatus;
+import com.fiap.tc.core.domain.exceptions.NotFoundException;
 import com.fiap.tc.fixture.FixtureTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -56,7 +56,7 @@ public class OrderOutputAdapterTest extends FixtureTest {
     @Test
     public void listOrdersByStatusTest() {
 
-        final var orderEntities = new PageImpl<OrderEntity>(List.of(orderEntity));
+        final var orderEntities = new PageImpl<>(List.of(orderEntity));
         when(orderRepository.findByStatus(status, pageable)).thenReturn(orderEntities);
 
         var ordersPageable = orderOutputAdapter.list(status, pageable);
@@ -102,7 +102,7 @@ public class OrderOutputAdapterTest extends FixtureTest {
     public void updateOrderStatusTest() {
         orderEntity.setStatus(OrderStatus.RECEIVED);
         statusRequest.setStatus(OrderStatus.PREPARING);
-        
+
         when(orderRepository.findByUuid(statusRequest.getId())).thenReturn(Optional.of(orderEntity));
         when(orderRepository.save(Mockito.any())).thenReturn(orderEntity);
 

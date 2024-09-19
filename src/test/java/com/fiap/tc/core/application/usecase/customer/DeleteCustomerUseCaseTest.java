@@ -1,7 +1,6 @@
-package com.fiap.tc.core.usecase.customer;
+package com.fiap.tc.core.application.usecase.customer;
 
 import com.fiap.tc.core.application.ports.out.customer.DeleteCustomerOutputPort;
-import com.fiap.tc.core.application.usecase.customer.DeleteCustomerUseCase;
 import com.fiap.tc.fixture.FixtureTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

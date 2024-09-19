@@ -27,7 +27,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class OrderPaymentOutputAdapterTest extends FixtureTest {
+public class OrderPaymentOutputAdapterTests extends FixtureTest {
 
     public static final UUID UUID = java.util.UUID.randomUUID();
 
@@ -38,7 +38,7 @@ public class OrderPaymentOutputAdapterTest extends FixtureTest {
     private OrderPaymentRepository orderPaymentRepository;
 
     @InjectMocks
-    private OrderPaymentOutputAdapter registerPaymentOutputAdapter;
+    private OrderPaymentOutputAdapter orderPaymentOutputAdapter;
 
     private OrderEntity orderEntity;
 
@@ -64,7 +64,7 @@ public class OrderPaymentOutputAdapterTest extends FixtureTest {
         when(orderPaymentRepository.findByOrderUuid(Mockito.any())).thenReturn(Optional.empty());
         when(orderPaymentRepository.save(Mockito.any())).thenReturn(orderPaymentEntity);
 
-        var orderPayment = registerPaymentOutputAdapter.saveOrUpdate(requestSuccess.getTransactionNumber(), requestSuccess.getTransactionMessage(), requestSuccess.getTransactionDocument(), requestSuccess.getStatus(), requestSuccess.getPaymentType(), requestSuccess.getTotal());
+        var orderPayment = orderPaymentOutputAdapter.saveOrUpdate(requestSuccess.getTransactionNumber(), requestSuccess.getTransactionMessage(), requestSuccess.getTransactionDocument(), requestSuccess.getStatus(), requestSuccess.getPaymentType(), requestSuccess.getTotal());
 
         assertNotNull(orderPayment);
         verify(orderRepository).findByUuid(Mockito.any());
@@ -80,7 +80,7 @@ public class OrderPaymentOutputAdapterTest extends FixtureTest {
         when(orderPaymentRepository.findByOrderUuid(Mockito.any())).thenReturn(Optional.empty());
         when(orderPaymentRepository.save(Mockito.any())).thenReturn(orderPaymentEntity);
 
-        var orderPayment = registerPaymentOutputAdapter.saveOrUpdate(requestError.getTransactionNumber(), requestError.getTransactionMessage(), requestError.getTransactionDocument(), requestError.getStatus(), requestError.getPaymentType(), requestError.getTotal());
+        var orderPayment = orderPaymentOutputAdapter.saveOrUpdate(requestError.getTransactionNumber(), requestError.getTransactionMessage(), requestError.getTransactionDocument(), requestError.getStatus(), requestError.getPaymentType(), requestError.getTotal());
 
         assertNotNull(orderPayment);
         verify(orderRepository).findByUuid(Mockito.any());
@@ -95,7 +95,7 @@ public class OrderPaymentOutputAdapterTest extends FixtureTest {
         when(orderPaymentRepository.findByOrderUuid(Mockito.any())).thenReturn(Optional.of(orderPaymentEntity));
         when(orderPaymentRepository.save(Mockito.any())).thenReturn(orderPaymentEntity);
 
-        var orderPayment = registerPaymentOutputAdapter.saveOrUpdate(requestSuccess.getTransactionNumber(), requestSuccess.getTransactionMessage(), requestSuccess.getTransactionDocument(), requestSuccess.getStatus(), requestSuccess.getPaymentType(), requestSuccess.getTotal());
+        var orderPayment = orderPaymentOutputAdapter.saveOrUpdate(requestSuccess.getTransactionNumber(), requestSuccess.getTransactionMessage(), requestSuccess.getTransactionDocument(), requestSuccess.getStatus(), requestSuccess.getPaymentType(), requestSuccess.getTotal());
 
         assertNotNull(orderPayment);
         verify(orderRepository).findByUuid(Mockito.any());
@@ -109,8 +109,24 @@ public class OrderPaymentOutputAdapterTest extends FixtureTest {
         when(orderRepository.findByUuid(Mockito.any())).thenReturn(Optional.empty());
 
         var assertThrows = Assertions.assertThrows(NotFoundException.class,
-                () -> registerPaymentOutputAdapter.saveOrUpdate(requestSuccess.getTransactionNumber(), requestSuccess.getTransactionMessage(), requestSuccess.getTransactionDocument(), requestSuccess.getStatus(), requestSuccess.getPaymentType(), requestSuccess.getTotal()));
+                () -> orderPaymentOutputAdapter.saveOrUpdate(requestSuccess.getTransactionNumber(), requestSuccess.getTransactionMessage(), requestSuccess.getTransactionDocument(), requestSuccess.getStatus(), requestSuccess.getPaymentType(), requestSuccess.getTotal()));
 
+        assertTrue(assertThrows.getMessage().contains("not found"));
+    }
+
+    @Test
+    public void loadPaymentTest() {
+        when(orderPaymentRepository.findByOrderUuid(UUID)).thenReturn(Optional.of(orderPaymentEntity));
+        var orderPayment = orderPaymentOutputAdapter.load(UUID);
+        assertNotNull(orderPayment);
+        verify(orderPaymentRepository).findByOrderUuid(UUID);
+    }
+
+    @Test
+    public void paymentNotFoundTest() {
+        when(orderPaymentRepository.findByOrderUuid(UUID)).thenReturn(Optional.empty());
+        var assertThrows = Assertions.assertThrows(NotFoundException.class,
+                () -> orderPaymentOutputAdapter.load(UUID));
         assertTrue(assertThrows.getMessage().contains("not found"));
     }
 
