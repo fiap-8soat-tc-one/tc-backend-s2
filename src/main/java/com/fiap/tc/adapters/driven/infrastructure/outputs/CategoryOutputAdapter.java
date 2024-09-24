@@ -1,8 +1,8 @@
 package com.fiap.tc.adapters.driven.infrastructure.outputs;
 
-import com.fiap.tc.adapters.driven.infrastructure.persistence.entities.CategoryEntity;
-import com.fiap.tc.adapters.driven.infrastructure.persistence.entities.embeddable.Audit;
-import com.fiap.tc.adapters.driven.infrastructure.persistence.repositories.CategoryRepository;
+import com.fiap.tc.infrastructure.persistence.entities.CategoryEntity;
+import com.fiap.tc.infrastructure.persistence.entities.embeddable.Audit;
+import com.fiap.tc.infrastructure.persistence.repositories.CategoryRepository;
 import com.fiap.tc.core.application.ports.out.category.*;
 import com.fiap.tc.domain.entities.Category;
 import com.fiap.tc.domain.exceptions.BadRequestException;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-import static com.fiap.tc.adapters.driven.infrastructure.mappers.base.MapperConstants.CATEGORY_MAPPER;
+import static com.fiap.tc.infrastructure.gateways.mappers.base.MapperConstants.CATEGORY_MAPPER;
 import static java.lang.String.format;
 
 @Service

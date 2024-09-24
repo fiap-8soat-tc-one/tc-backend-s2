@@ -2,9 +2,9 @@ package com.fiap.tc.adapters.repository.output;
 
 import br.com.six2six.fixturefactory.Fixture;
 import com.fiap.tc.adapters.driven.infrastructure.outputs.CategoryOutputAdapter;
-import com.fiap.tc.adapters.driven.infrastructure.persistence.entities.CategoryEntity;
-import com.fiap.tc.adapters.driven.infrastructure.persistence.repositories.CategoryRepository;
-import com.fiap.tc.adapters.driver.presentation.requests.CategoryRequest;
+import com.fiap.tc.infrastructure.persistence.entities.CategoryEntity;
+import com.fiap.tc.infrastructure.persistence.repositories.CategoryRepository;
+import com.fiap.tc.infrastructure.presentation.requests.CategoryRequest;
 import com.fiap.tc.domain.exceptions.BadRequestException;
 import com.fiap.tc.domain.exceptions.NotFoundException;
 import com.fiap.tc.fixture.FixtureTest;

@@ -1,6 +1,6 @@
 package com.fiap.tc.adapters.repository.output.validator.order.concrete;
 
-import com.fiap.tc.adapters.driven.infrastructure.outputs.validators.order.concrete.FinishedOrderStatusValidator;
+import com.fiap.tc.infrastructure.gateways.validators.order.concrete.FinishedOrderStatusValidator;
 import com.fiap.tc.domain.exceptions.BadRequestException;
 import com.fiap.tc.domain.enums.OrderStatus;
 import org.junit.jupiter.api.Test;

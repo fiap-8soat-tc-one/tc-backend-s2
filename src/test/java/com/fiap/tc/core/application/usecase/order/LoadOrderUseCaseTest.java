@@ -1,8 +1,8 @@
 package com.fiap.tc.core.application.usecase.order;
 
 import br.com.six2six.fixturefactory.Fixture;
-import com.fiap.tc.adapters.driven.infrastructure.mappers.base.MapperConstants;
-import com.fiap.tc.adapters.driven.infrastructure.persistence.entities.OrderEntity;
+import com.fiap.tc.infrastructure.gateways.mappers.base.MapperConstants;
+import com.fiap.tc.infrastructure.persistence.entities.OrderEntity;
 import com.fiap.tc.application.usecase.order.LoadOrderUseCase;
 import com.fiap.tc.core.application.ports.out.order.LoadOrderOutputPort;
 import com.fiap.tc.core.application.ports.out.payment.PaymentLinkOutputPort;

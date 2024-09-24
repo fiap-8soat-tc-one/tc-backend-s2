@@ -1,7 +1,7 @@
 package com.fiap.tc.domain.enums;
 
-import com.fiap.tc.adapters.driven.infrastructure.outputs.validators.order.OrderStatusValidator;
-import com.fiap.tc.adapters.driven.infrastructure.outputs.validators.order.concrete.*;
+import com.fiap.tc.infrastructure.gateways.validators.order.OrderStatusValidator;
+import com.fiap.tc.infrastructure.gateways.validators.order.concrete.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

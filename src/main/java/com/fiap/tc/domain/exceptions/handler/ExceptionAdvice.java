@@ -1,6 +1,6 @@
 package com.fiap.tc.domain.exceptions.handler;
 
-import com.fiap.tc.adapters.driver.presentation.response.DefaultResponse;
+import com.fiap.tc.infrastructure.presentation.response.DefaultResponse;
 import com.fiap.tc.domain.exceptions.BadRequestException;
 import com.fiap.tc.domain.exceptions.NotFoundException;
 import lombok.extern.slf4j.Slf4j;

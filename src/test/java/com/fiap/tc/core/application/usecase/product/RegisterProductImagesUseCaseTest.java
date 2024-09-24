@@ -3,7 +3,7 @@ package com.fiap.tc.core.application.usecase.product;
 import br.com.six2six.fixturefactory.Fixture;
 import com.fiap.tc.application.usecase.product.RegisterProductImagesUseCase;
 import com.fiap.tc.domain.entities.Product;
-import com.fiap.tc.adapters.driver.presentation.requests.RegisterProductImagesRequest;
+import com.fiap.tc.infrastructure.presentation.requests.RegisterProductImagesRequest;
 import com.fiap.tc.core.application.ports.out.product.RegisterProductImagesOutputPort;
 import com.fiap.tc.fixture.FixtureTest;
 import org.junit.jupiter.api.Assertions;

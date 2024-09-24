@@ -1,10 +1,10 @@
 package com.fiap.tc.adapters.repository.output.validator.upload.concrete;
 
 import br.com.six2six.fixturefactory.Fixture;
-import com.fiap.tc.adapters.driven.infrastructure.outputs.validators.upload.concrete.ImageMaxLengthValidator;
-import com.fiap.tc.adapters.driven.infrastructure.persistence.entities.ProductEntity;
-import com.fiap.tc.adapters.driven.infrastructure.outputs.validators.upload.ProductImageValidatorWrapper;
-import com.fiap.tc.adapters.driven.security.configurations.UploadConfig;
+import com.fiap.tc.infrastructure.gateways.validators.upload.concrete.ImageMaxLengthValidator;
+import com.fiap.tc.infrastructure.persistence.entities.ProductEntity;
+import com.fiap.tc.infrastructure.gateways.validators.upload.ProductImageValidatorWrapper;
+import com.fiap.tc.infrastructure.core.security.configurations.UploadConfig;
 import com.fiap.tc.domain.exceptions.BadRequestException;
 import com.fiap.tc.domain.entities.ProductImage;
 import com.fiap.tc.fixture.FixtureTest;

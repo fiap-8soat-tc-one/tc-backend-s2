@@ -1,13 +1,13 @@
 package com.fiap.tc.adapters.driven.infrastructure.outputs;
 
-import com.fiap.tc.adapters.driven.infrastructure.persistence.builders.OrderHistoricBuilder;
-import com.fiap.tc.adapters.driven.infrastructure.persistence.entities.OrderEntity;
-import com.fiap.tc.adapters.driven.infrastructure.persistence.entities.OrderItemEntity;
-import com.fiap.tc.adapters.driven.infrastructure.persistence.entities.embeddable.Audit;
-import com.fiap.tc.adapters.driven.infrastructure.mappers.base.MapperConstants;
-import com.fiap.tc.adapters.driven.infrastructure.persistence.repositories.CustomerRepository;
-import com.fiap.tc.adapters.driven.infrastructure.persistence.repositories.OrderRepository;
-import com.fiap.tc.adapters.driven.infrastructure.persistence.repositories.ProductRepository;
+import com.fiap.tc.infrastructure.persistence.builders.OrderHistoricBuilder;
+import com.fiap.tc.infrastructure.persistence.entities.OrderEntity;
+import com.fiap.tc.infrastructure.persistence.entities.OrderItemEntity;
+import com.fiap.tc.infrastructure.persistence.entities.embeddable.Audit;
+import com.fiap.tc.infrastructure.gateways.mappers.base.MapperConstants;
+import com.fiap.tc.infrastructure.persistence.repositories.CustomerRepository;
+import com.fiap.tc.infrastructure.persistence.repositories.OrderRepository;
+import com.fiap.tc.infrastructure.persistence.repositories.ProductRepository;
 import com.fiap.tc.core.application.ports.out.order.RegisterOrderOutputPort;
 import com.fiap.tc.domain.entities.Order;
 import com.fiap.tc.domain.entities.OrderItem;

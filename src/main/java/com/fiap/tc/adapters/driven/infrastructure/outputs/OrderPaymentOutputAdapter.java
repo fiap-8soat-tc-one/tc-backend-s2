@@ -1,12 +1,12 @@
 package com.fiap.tc.adapters.driven.infrastructure.outputs;
 
-import com.fiap.tc.adapters.driven.infrastructure.mappers.base.MapperConstants;
-import com.fiap.tc.adapters.driven.infrastructure.persistence.builders.OrderPaymentHistoricBuilder;
-import com.fiap.tc.adapters.driven.infrastructure.persistence.entities.OrderEntity;
-import com.fiap.tc.adapters.driven.infrastructure.persistence.entities.OrderPaymentEntity;
-import com.fiap.tc.adapters.driven.infrastructure.persistence.entities.embeddable.Audit;
-import com.fiap.tc.adapters.driven.infrastructure.persistence.repositories.OrderPaymentRepository;
-import com.fiap.tc.adapters.driven.infrastructure.persistence.repositories.OrderRepository;
+import com.fiap.tc.infrastructure.gateways.mappers.base.MapperConstants;
+import com.fiap.tc.infrastructure.persistence.builders.OrderPaymentHistoricBuilder;
+import com.fiap.tc.infrastructure.persistence.entities.OrderEntity;
+import com.fiap.tc.infrastructure.persistence.entities.OrderPaymentEntity;
+import com.fiap.tc.infrastructure.persistence.entities.embeddable.Audit;
+import com.fiap.tc.infrastructure.persistence.repositories.OrderPaymentRepository;
+import com.fiap.tc.infrastructure.persistence.repositories.OrderRepository;
 import com.fiap.tc.core.application.ports.out.payment.LoadPaymentOutputPort;
 import com.fiap.tc.core.application.ports.out.payment.RegisterPaymentOutputPort;
 import com.fiap.tc.domain.entities.OrderPayment;

@@ -2,10 +2,10 @@ package com.fiap.tc.adapters.repository.output;
 
 import br.com.six2six.fixturefactory.Fixture;
 import com.fiap.tc.adapters.driven.infrastructure.outputs.ProductOutputAdapter;
-import com.fiap.tc.adapters.driven.infrastructure.persistence.entities.CategoryEntity;
-import com.fiap.tc.adapters.driven.infrastructure.persistence.entities.ProductEntity;
-import com.fiap.tc.adapters.driven.infrastructure.persistence.repositories.CategoryRepository;
-import com.fiap.tc.adapters.driven.infrastructure.persistence.repositories.ProductRepository;
+import com.fiap.tc.infrastructure.persistence.entities.CategoryEntity;
+import com.fiap.tc.infrastructure.persistence.entities.ProductEntity;
+import com.fiap.tc.infrastructure.persistence.repositories.CategoryRepository;
+import com.fiap.tc.infrastructure.persistence.repositories.ProductRepository;
 import com.fiap.tc.domain.entities.Product;
 import com.fiap.tc.domain.exceptions.BadRequestException;
 import com.fiap.tc.domain.exceptions.NotFoundException;

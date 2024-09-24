@@ -1,7 +1,7 @@
 package com.fiap.tc.core.application.usecase.category;
 
 import br.com.six2six.fixturefactory.Fixture;
-import com.fiap.tc.adapters.driver.presentation.requests.CategoryRequest;
+import com.fiap.tc.infrastructure.presentation.requests.CategoryRequest;
 import com.fiap.tc.application.usecase.category.UpdateCategoryUseCase;
 import com.fiap.tc.core.application.ports.out.category.UpdateCategoryOutputPort;
 import com.fiap.tc.domain.entities.Category;

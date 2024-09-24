@@ -1,8 +1,8 @@
 package com.fiap.tc.adapters.driven.infrastructure.outputs;
 
-import com.fiap.tc.adapters.driven.infrastructure.persistence.repositories.CustomerRepository;
-import com.fiap.tc.adapters.driven.infrastructure.persistence.entities.CustomerEntity;
-import com.fiap.tc.adapters.driven.infrastructure.persistence.entities.embeddable.Audit;
+import com.fiap.tc.infrastructure.persistence.repositories.CustomerRepository;
+import com.fiap.tc.infrastructure.persistence.entities.CustomerEntity;
+import com.fiap.tc.infrastructure.persistence.entities.embeddable.Audit;
 import com.fiap.tc.domain.exceptions.NotFoundException;
 import com.fiap.tc.domain.entities.Customer;
 import com.fiap.tc.core.application.ports.out.customer.DeleteCustomerOutputPort;
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-import static com.fiap.tc.adapters.driven.infrastructure.mappers.base.MapperConstants.CUSTOMER_MAPPER;
+import static com.fiap.tc.infrastructure.gateways.mappers.base.MapperConstants.CUSTOMER_MAPPER;
 import static java.lang.String.format;
 
 @Service
