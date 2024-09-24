@@ -2,8 +2,8 @@ package com.fiap.tc.adapters.driven.infrastructure.outputs;
 
 import br.com.six2six.fixturefactory.Fixture;
 import com.fiap.tc.adapters.driven.infrastructure.utils.QRCodeGenerator;
-import com.fiap.tc.core.domain.entities.Order;
-import com.fiap.tc.core.domain.enums.OrderStatus;
+import com.fiap.tc.domain.entities.Order;
+import com.fiap.tc.domain.enums.OrderStatus;
 import com.fiap.tc.fixture.FixtureTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

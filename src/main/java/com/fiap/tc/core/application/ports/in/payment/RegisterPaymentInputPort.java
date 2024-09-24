@@ -1,7 +1,7 @@
 package com.fiap.tc.core.application.ports.in.payment;
 
-import com.fiap.tc.core.domain.enums.PaymentStatus;
-import com.fiap.tc.core.domain.enums.PaymentType;
+import com.fiap.tc.domain.enums.PaymentStatus;
+import com.fiap.tc.domain.enums.PaymentType;
 
 import java.math.BigDecimal;
 

@@ -3,8 +3,8 @@ package com.fiap.tc.adapters.driven.infrastructure.mappers;
 import com.fiap.tc.adapters.driven.infrastructure.persistence.entities.OrderEntity;
 import com.fiap.tc.adapters.driven.infrastructure.persistence.entities.OrderHistoricEntity;
 import com.fiap.tc.adapters.driven.infrastructure.mappers.base.MapperEntity;
-import com.fiap.tc.core.domain.entities.OrderList;
-import com.fiap.tc.core.domain.enums.OrderStatus;
+import com.fiap.tc.domain.entities.OrderList;
+import com.fiap.tc.domain.enums.OrderStatus;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
@@ -14,7 +14,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
 
-import static com.fiap.tc.core.domain.constants.OrderConstants.WAIT_TIME_STATUS;
+import static com.fiap.tc.domain.constants.OrderConstants.WAIT_TIME_STATUS;
 
 @Mapper
 public interface OrderListMapper extends MapperEntity<OrderEntity, OrderList> {

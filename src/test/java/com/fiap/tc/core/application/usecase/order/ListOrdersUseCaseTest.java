@@ -12,7 +12,7 @@ import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
-import static com.fiap.tc.core.domain.enums.OrderStatus.*;
+import static com.fiap.tc.domain.enums.OrderStatus.*;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)

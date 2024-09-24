@@ -1,4 +1,4 @@
-package com.fiap.tc.core.domain.entities;
+package com.fiap.tc.domain.entities;
 
 import lombok.Data;
 

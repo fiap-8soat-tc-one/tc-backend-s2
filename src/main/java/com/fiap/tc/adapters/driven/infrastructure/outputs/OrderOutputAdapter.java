@@ -6,10 +6,10 @@ import com.fiap.tc.adapters.driven.infrastructure.persistence.repositories.Order
 import com.fiap.tc.core.application.ports.out.order.ListOrdersOutputPort;
 import com.fiap.tc.core.application.ports.out.order.LoadOrderOutputPort;
 import com.fiap.tc.core.application.ports.out.order.UpdateStatusOrderOutputPort;
-import com.fiap.tc.core.domain.entities.Order;
-import com.fiap.tc.core.domain.entities.OrderList;
-import com.fiap.tc.core.domain.enums.OrderStatus;
-import com.fiap.tc.core.domain.exceptions.NotFoundException;
+import com.fiap.tc.domain.entities.Order;
+import com.fiap.tc.domain.entities.OrderList;
+import com.fiap.tc.domain.enums.OrderStatus;
+import com.fiap.tc.domain.exceptions.NotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;

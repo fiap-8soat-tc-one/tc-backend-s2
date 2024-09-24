@@ -5,7 +5,7 @@ import com.fiap.tc.adapters.driven.infrastructure.mappers.base.MapperConstants;
 import com.fiap.tc.adapters.driven.infrastructure.persistence.entities.OrderEntity;
 import com.fiap.tc.core.application.ports.out.order.LoadOrderOutputPort;
 import com.fiap.tc.core.application.ports.out.payment.PaymentLinkOutputPort;
-import com.fiap.tc.core.domain.enums.OrderStatus;
+import com.fiap.tc.domain.enums.OrderStatus;
 import com.fiap.tc.fixture.FixtureTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

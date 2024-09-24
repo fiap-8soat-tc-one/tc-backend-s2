@@ -9,10 +9,10 @@ import com.fiap.tc.adapters.driven.infrastructure.persistence.repositories.Custo
 import com.fiap.tc.adapters.driven.infrastructure.persistence.repositories.OrderRepository;
 import com.fiap.tc.adapters.driven.infrastructure.persistence.repositories.ProductRepository;
 import com.fiap.tc.core.application.ports.out.order.RegisterOrderOutputPort;
-import com.fiap.tc.core.domain.entities.Order;
-import com.fiap.tc.core.domain.entities.OrderItem;
-import com.fiap.tc.core.domain.enums.OrderStatus;
-import com.fiap.tc.core.domain.exceptions.NotFoundException;
+import com.fiap.tc.domain.entities.Order;
+import com.fiap.tc.domain.entities.OrderItem;
+import com.fiap.tc.domain.enums.OrderStatus;
+import com.fiap.tc.domain.exceptions.NotFoundException;
 import org.springframework.stereotype.Service;
 import org.sqids.Sqids;
 

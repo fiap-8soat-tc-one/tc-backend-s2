@@ -1,6 +1,6 @@
 package com.fiap.tc.core.application.ports.in.payment;
 
-import com.fiap.tc.core.domain.entities.OrderPayment;
+import com.fiap.tc.domain.entities.OrderPayment;
 
 import java.util.UUID;
 

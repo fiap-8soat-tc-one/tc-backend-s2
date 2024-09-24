@@ -3,8 +3,8 @@ package com.fiap.tc.core.application.usecase.payment;
 import com.fiap.tc.core.application.ports.in.payment.RegisterPaymentInputPort;
 import com.fiap.tc.core.application.ports.out.order.UpdateStatusOrderOutputPort;
 import com.fiap.tc.core.application.ports.out.payment.RegisterPaymentOutputPort;
-import com.fiap.tc.core.domain.enums.PaymentStatus;
-import com.fiap.tc.core.domain.enums.PaymentType;
+import com.fiap.tc.domain.enums.PaymentStatus;
+import com.fiap.tc.domain.enums.PaymentType;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;

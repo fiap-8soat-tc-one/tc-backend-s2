@@ -2,7 +2,7 @@ package com.fiap.tc.adapters.driver.presentation.mappers;
 
 import com.fiap.tc.adapters.driver.presentation.mappers.base.MapperEntity;
 import com.fiap.tc.adapters.driver.presentation.response.ProductResponse;
-import com.fiap.tc.core.domain.entities.Product;
+import com.fiap.tc.domain.entities.Product;
 import org.mapstruct.Mapper;
 
 @Mapper

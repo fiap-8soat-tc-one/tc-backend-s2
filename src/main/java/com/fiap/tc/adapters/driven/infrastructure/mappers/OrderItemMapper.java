@@ -2,7 +2,7 @@ package com.fiap.tc.adapters.driven.infrastructure.mappers;
 
 import com.fiap.tc.adapters.driven.infrastructure.persistence.entities.OrderItemEntity;
 import com.fiap.tc.adapters.driven.infrastructure.mappers.base.MapperEntity;
-import com.fiap.tc.core.domain.entities.OrderItem;
+import com.fiap.tc.domain.entities.OrderItem;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

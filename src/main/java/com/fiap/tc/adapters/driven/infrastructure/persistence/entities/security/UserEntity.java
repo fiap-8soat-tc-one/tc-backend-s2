@@ -1,7 +1,7 @@
 package com.fiap.tc.adapters.driven.infrastructure.persistence.entities.security;
 
-import com.fiap.tc.core.domain.enums.DocumentType;
-import com.fiap.tc.core.domain.enums.UserStatus;
+import com.fiap.tc.domain.enums.DocumentType;
+import com.fiap.tc.domain.enums.UserStatus;
 import lombok.Data;
 
 import javax.persistence.*;

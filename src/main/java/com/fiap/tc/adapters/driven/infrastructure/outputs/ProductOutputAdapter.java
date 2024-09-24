@@ -6,9 +6,9 @@ import com.fiap.tc.adapters.driven.infrastructure.persistence.entities.embeddabl
 import com.fiap.tc.adapters.driven.infrastructure.persistence.repositories.CategoryRepository;
 import com.fiap.tc.adapters.driven.infrastructure.persistence.repositories.ProductRepository;
 import com.fiap.tc.core.application.ports.out.product.*;
-import com.fiap.tc.core.domain.entities.Product;
-import com.fiap.tc.core.domain.exceptions.BadRequestException;
-import com.fiap.tc.core.domain.exceptions.NotFoundException;
+import com.fiap.tc.domain.entities.Product;
+import com.fiap.tc.domain.exceptions.BadRequestException;
+import com.fiap.tc.domain.exceptions.NotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;

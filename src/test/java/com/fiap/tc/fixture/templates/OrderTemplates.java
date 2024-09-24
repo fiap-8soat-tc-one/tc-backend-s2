@@ -9,12 +9,12 @@ import com.fiap.tc.adapters.driver.presentation.requests.OrderItemRequest;
 import com.fiap.tc.adapters.driver.presentation.requests.OrderPaymentRequest;
 import com.fiap.tc.adapters.driver.presentation.requests.OrderRequest;
 import com.fiap.tc.adapters.driver.presentation.requests.OrderStatusRequest;
-import com.fiap.tc.core.domain.entities.Order;
-import com.fiap.tc.core.domain.entities.OrderPayment;
-import com.fiap.tc.core.domain.entities.PaymentHistoric;
-import com.fiap.tc.core.domain.enums.OrderStatus;
-import com.fiap.tc.core.domain.enums.PaymentStatus;
-import com.fiap.tc.core.domain.enums.PaymentType;
+import com.fiap.tc.domain.entities.Order;
+import com.fiap.tc.domain.entities.OrderPayment;
+import com.fiap.tc.domain.entities.PaymentHistoric;
+import com.fiap.tc.domain.enums.OrderStatus;
+import com.fiap.tc.domain.enums.PaymentStatus;
+import com.fiap.tc.domain.enums.PaymentType;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

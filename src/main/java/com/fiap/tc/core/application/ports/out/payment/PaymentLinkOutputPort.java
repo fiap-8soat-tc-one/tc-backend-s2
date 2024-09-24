@@ -1,6 +1,6 @@
 package com.fiap.tc.core.application.ports.out.payment;
 
-import com.fiap.tc.core.domain.entities.Order;
+import com.fiap.tc.domain.entities.Order;
 
 import java.util.Optional;
 

@@ -1,7 +1,7 @@
-package com.fiap.tc.core.domain.entities;
+package com.fiap.tc.domain.entities;
 
-import com.fiap.tc.core.domain.enums.PaymentStatus;
-import com.fiap.tc.core.domain.enums.PaymentType;
+import com.fiap.tc.domain.enums.PaymentStatus;
+import com.fiap.tc.domain.enums.PaymentType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

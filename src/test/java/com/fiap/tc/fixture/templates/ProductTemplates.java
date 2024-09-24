@@ -11,8 +11,8 @@ import com.fiap.tc.adapters.driver.presentation.requests.DeleteProductImagesRequ
 import com.fiap.tc.adapters.driver.presentation.requests.ProductImageRequest;
 import com.fiap.tc.adapters.driver.presentation.requests.ProductRequest;
 import com.fiap.tc.adapters.driver.presentation.requests.RegisterProductImagesRequest;
-import com.fiap.tc.core.domain.entities.Product;
-import com.fiap.tc.core.domain.entities.ProductImage;
+import com.fiap.tc.domain.entities.Product;
+import com.fiap.tc.domain.entities.ProductImage;
 
 import java.math.BigDecimal;
 import java.util.List;

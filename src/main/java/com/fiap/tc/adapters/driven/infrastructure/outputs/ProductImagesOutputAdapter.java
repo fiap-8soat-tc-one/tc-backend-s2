@@ -7,9 +7,9 @@ import com.fiap.tc.adapters.driven.infrastructure.persistence.entities.ProductEn
 import com.fiap.tc.adapters.driven.infrastructure.persistence.entities.ProductImageEntity;
 import com.fiap.tc.adapters.driven.infrastructure.persistence.entities.embeddable.Audit;
 import com.fiap.tc.adapters.driven.infrastructure.mappers.base.MapperConstants;
-import com.fiap.tc.core.domain.exceptions.NotFoundException;
-import com.fiap.tc.core.domain.entities.Product;
-import com.fiap.tc.core.domain.entities.ProductImage;
+import com.fiap.tc.domain.exceptions.NotFoundException;
+import com.fiap.tc.domain.entities.Product;
+import com.fiap.tc.domain.entities.ProductImage;
 import com.fiap.tc.core.application.ports.out.product.DeleteProductImagesOutputPort;
 import com.fiap.tc.core.application.ports.out.product.RegisterProductImagesOutputPort;
 import org.springframework.stereotype.Service;

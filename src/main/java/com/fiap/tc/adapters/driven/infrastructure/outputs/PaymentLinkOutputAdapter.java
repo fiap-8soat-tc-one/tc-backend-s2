@@ -2,12 +2,12 @@ package com.fiap.tc.adapters.driven.infrastructure.outputs;
 
 import com.fiap.tc.adapters.driven.infrastructure.utils.QRCodeGenerator;
 import com.fiap.tc.core.application.ports.out.payment.PaymentLinkOutputPort;
-import com.fiap.tc.core.domain.entities.Order;
+import com.fiap.tc.domain.entities.Order;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-import static com.fiap.tc.core.domain.constants.OrderConstants.PAYMENT_LINK_STATUS;
+import static com.fiap.tc.domain.constants.OrderConstants.PAYMENT_LINK_STATUS;
 
 @Service
 public class PaymentLinkOutputAdapter implements PaymentLinkOutputPort {

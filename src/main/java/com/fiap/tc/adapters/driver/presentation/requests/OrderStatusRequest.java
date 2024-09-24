@@ -1,6 +1,6 @@
 package com.fiap.tc.adapters.driver.presentation.requests;
 
-import com.fiap.tc.core.domain.enums.OrderStatus;
+import com.fiap.tc.domain.enums.OrderStatus;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 

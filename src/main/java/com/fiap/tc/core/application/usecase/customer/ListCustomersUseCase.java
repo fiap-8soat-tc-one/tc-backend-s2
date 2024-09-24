@@ -1,6 +1,6 @@
 package com.fiap.tc.core.application.usecase.customer;
 
-import com.fiap.tc.core.domain.entities.Customer;
+import com.fiap.tc.domain.entities.Customer;
 import com.fiap.tc.core.application.ports.in.customer.ListCustomersInputPort;
 import com.fiap.tc.core.application.ports.out.customer.ListCustomersOutputPort;
 import lombok.extern.slf4j.Slf4j;

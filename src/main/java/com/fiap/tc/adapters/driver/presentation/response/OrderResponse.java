@@ -2,7 +2,7 @@ package com.fiap.tc.adapters.driver.presentation.response;
 
 import com.fiap.tc.adapters.driver.presentation.dtos.OrderHistoricDto;
 import com.fiap.tc.adapters.driver.presentation.dtos.OrderItemDto;
-import com.fiap.tc.core.domain.enums.OrderStatus;
+import com.fiap.tc.domain.enums.OrderStatus;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

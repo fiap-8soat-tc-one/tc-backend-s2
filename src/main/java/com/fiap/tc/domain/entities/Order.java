@@ -1,6 +1,6 @@
-package com.fiap.tc.core.domain.entities;
+package com.fiap.tc.domain.entities;
 
-import com.fiap.tc.core.domain.enums.OrderStatus;
+import com.fiap.tc.domain.enums.OrderStatus;
 import lombok.Data;
 
 import java.math.BigDecimal;

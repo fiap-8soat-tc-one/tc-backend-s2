@@ -1,6 +1,6 @@
 package com.fiap.tc.adapters.driver.presentation.dtos;
 
-import com.fiap.tc.core.domain.enums.OrderStatus;
+import com.fiap.tc.domain.enums.OrderStatus;
 import lombok.Data;
 
 import java.time.LocalDateTime;

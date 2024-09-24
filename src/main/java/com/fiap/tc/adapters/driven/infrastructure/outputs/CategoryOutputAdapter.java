@@ -4,9 +4,9 @@ import com.fiap.tc.adapters.driven.infrastructure.persistence.entities.CategoryE
 import com.fiap.tc.adapters.driven.infrastructure.persistence.entities.embeddable.Audit;
 import com.fiap.tc.adapters.driven.infrastructure.persistence.repositories.CategoryRepository;
 import com.fiap.tc.core.application.ports.out.category.*;
-import com.fiap.tc.core.domain.entities.Category;
-import com.fiap.tc.core.domain.exceptions.BadRequestException;
-import com.fiap.tc.core.domain.exceptions.NotFoundException;
+import com.fiap.tc.domain.entities.Category;
+import com.fiap.tc.domain.exceptions.BadRequestException;
+import com.fiap.tc.domain.exceptions.NotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;

@@ -9,10 +9,10 @@ import com.fiap.tc.adapters.driven.infrastructure.persistence.repositories.Order
 import com.fiap.tc.adapters.driven.infrastructure.persistence.repositories.OrderRepository;
 import com.fiap.tc.core.application.ports.out.payment.LoadPaymentOutputPort;
 import com.fiap.tc.core.application.ports.out.payment.RegisterPaymentOutputPort;
-import com.fiap.tc.core.domain.entities.OrderPayment;
-import com.fiap.tc.core.domain.enums.PaymentStatus;
-import com.fiap.tc.core.domain.enums.PaymentType;
-import com.fiap.tc.core.domain.exceptions.NotFoundException;
+import com.fiap.tc.domain.entities.OrderPayment;
+import com.fiap.tc.domain.enums.PaymentStatus;
+import com.fiap.tc.domain.enums.PaymentType;
+import com.fiap.tc.domain.exceptions.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;

@@ -1,8 +1,8 @@
 package com.fiap.tc.adapters.driven.infrastructure.persistence.entities;
 
 import com.fiap.tc.adapters.driven.infrastructure.persistence.entities.embeddable.Audit;
-import com.fiap.tc.core.domain.enums.PaymentStatus;
-import com.fiap.tc.core.domain.enums.PaymentType;
+import com.fiap.tc.domain.enums.PaymentStatus;
+import com.fiap.tc.domain.enums.PaymentType;
 import lombok.Data;
 
 import javax.persistence.*;

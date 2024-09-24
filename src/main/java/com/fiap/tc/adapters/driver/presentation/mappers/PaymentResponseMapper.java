@@ -3,7 +3,7 @@ package com.fiap.tc.adapters.driver.presentation.mappers;
 import com.fiap.tc.adapters.driver.presentation.dtos.PaymentHistoricDto;
 import com.fiap.tc.adapters.driver.presentation.mappers.base.MapperEntity;
 import com.fiap.tc.adapters.driver.presentation.response.OrderPaymentResponse;
-import com.fiap.tc.core.domain.entities.OrderPayment;
+import com.fiap.tc.domain.entities.OrderPayment;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;

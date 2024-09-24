@@ -1,8 +1,8 @@
 package com.fiap.tc.adapters.driver.presentation.requests;
 
 import br.com.caelum.stella.bean.validation.CPF;
-import com.fiap.tc.core.domain.enums.PaymentStatus;
-import com.fiap.tc.core.domain.enums.PaymentType;
+import com.fiap.tc.domain.enums.PaymentStatus;
+import com.fiap.tc.domain.enums.PaymentType;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 

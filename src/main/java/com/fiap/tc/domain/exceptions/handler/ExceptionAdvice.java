@@ -1,8 +1,8 @@
-package com.fiap.tc.core.domain.exceptions.handler;
+package com.fiap.tc.domain.exceptions.handler;
 
 import com.fiap.tc.adapters.driver.presentation.response.DefaultResponse;
-import com.fiap.tc.core.domain.exceptions.BadRequestException;
-import com.fiap.tc.core.domain.exceptions.NotFoundException;
+import com.fiap.tc.domain.exceptions.BadRequestException;
+import com.fiap.tc.domain.exceptions.NotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpHeaders;

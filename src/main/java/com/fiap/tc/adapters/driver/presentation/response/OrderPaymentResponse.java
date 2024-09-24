@@ -1,8 +1,8 @@
 package com.fiap.tc.adapters.driver.presentation.response;
 
 import com.fiap.tc.adapters.driver.presentation.dtos.PaymentHistoricDto;
-import com.fiap.tc.core.domain.enums.PaymentStatus;
-import com.fiap.tc.core.domain.enums.PaymentType;
+import com.fiap.tc.domain.enums.PaymentStatus;
+import com.fiap.tc.domain.enums.PaymentType;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
