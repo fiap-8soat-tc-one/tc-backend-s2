@@ -1,6 +1,7 @@
 package com.fiap.tc.core.application.usecase.category;
 
 import br.com.six2six.fixturefactory.Fixture;
+import com.fiap.tc.application.usecase.category.LoadCategoryUseCase;
 import com.fiap.tc.domain.entities.Category;
 import com.fiap.tc.core.application.ports.out.category.LoadCategoryOutputPort;
 import com.fiap.tc.fixture.FixtureTest;

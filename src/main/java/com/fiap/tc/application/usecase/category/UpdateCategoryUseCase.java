@@ -1,0 +1,23 @@
+package com.fiap.tc.application.usecase.category;
+
+import com.fiap.tc.core.application.ports.in.category.UpdateCategoryInputPort;
+import com.fiap.tc.core.application.ports.out.category.UpdateCategoryOutputPort;
+import com.fiap.tc.domain.entities.Category;
+import org.springframework.stereotype.Service;
+
+import java.util.UUID;
+
+@Service
+public class UpdateCategoryUseCase implements UpdateCategoryInputPort {
+
+    private final UpdateCategoryOutputPort updateCategoryOutputPort;
+
+    public UpdateCategoryUseCase(UpdateCategoryOutputPort updateCategoryOutputPort) {
+        this.updateCategoryOutputPort = updateCategoryOutputPort;
+    }
+
+    @Override
+    public Category update(UUID idCategory, String name, String description) {
+        return updateCategoryOutputPort.update(idCategory, name, description);
+    }
+}

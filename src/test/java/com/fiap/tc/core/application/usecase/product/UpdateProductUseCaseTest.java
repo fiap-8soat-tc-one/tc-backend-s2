@@ -1,6 +1,7 @@
 package com.fiap.tc.core.application.usecase.product;
 
 import br.com.six2six.fixturefactory.Fixture;
+import com.fiap.tc.application.usecase.product.UpdateProductUseCase;
 import com.fiap.tc.domain.entities.Product;
 import com.fiap.tc.adapters.driver.presentation.requests.ProductRequest;
 import com.fiap.tc.core.application.ports.out.product.UpdateProductOutputPort;

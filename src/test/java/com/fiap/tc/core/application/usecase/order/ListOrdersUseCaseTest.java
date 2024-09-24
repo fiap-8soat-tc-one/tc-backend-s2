@@ -1,5 +1,6 @@
 package com.fiap.tc.core.application.usecase.order;
 
+import com.fiap.tc.application.usecase.order.ListOrdersUseCase;
 import com.fiap.tc.core.application.ports.out.order.ListOrdersOutputPort;
 import com.fiap.tc.fixture.FixtureTest;
 import org.junit.jupiter.api.Test;

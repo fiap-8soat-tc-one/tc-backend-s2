@@ -1,6 +1,7 @@
 package com.fiap.tc.core.application.usecase.payment;
 
 import br.com.six2six.fixturefactory.Fixture;
+import com.fiap.tc.application.usecase.payment.RegisterPaymentUseCase;
 import com.fiap.tc.domain.entities.OrderPayment;
 import com.fiap.tc.adapters.driver.presentation.requests.OrderPaymentRequest;
 import com.fiap.tc.core.application.ports.out.order.UpdateStatusOrderOutputPort;
