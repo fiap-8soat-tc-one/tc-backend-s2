@@ -1,23 +1,20 @@
 package com.fiap.tc.application.usecases.customer;
 
-import com.fiap.tc.core.application.ports.in.customer.DeleteCustomerInputPort;
-import com.fiap.tc.core.application.ports.out.customer.DeleteCustomerOutputPort;
+import com.fiap.tc.application.gateways.CustomerGateway;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
-public class DeleteCustomerUseCase implements DeleteCustomerInputPort {
+public class DeleteCustomerUseCase {
 
-    private final DeleteCustomerOutputPort deleteCustomerOutputPort;
+    private final CustomerGateway customerGateway;
 
-    public DeleteCustomerUseCase(DeleteCustomerOutputPort deleteCustomerOutputPort) {
-        this.deleteCustomerOutputPort = deleteCustomerOutputPort;
+    public DeleteCustomerUseCase(CustomerGateway customerGateway) {
+        this.customerGateway = customerGateway;
     }
 
-
-    @Override
     public void delete(String document) {
-        this.deleteCustomerOutputPort.delete(document);
+        this.customerGateway.delete(document);
     }
 }

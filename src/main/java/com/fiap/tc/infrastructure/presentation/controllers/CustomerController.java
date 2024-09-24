@@ -1,12 +1,12 @@
 package com.fiap.tc.infrastructure.presentation.controllers;
 
+import com.fiap.tc.application.usecases.customer.DeleteCustomerUseCase;
+import com.fiap.tc.application.usecases.customer.ListCustomersUseCase;
+import com.fiap.tc.application.usecases.customer.LoadCustomerUseCase;
+import com.fiap.tc.application.usecases.customer.RegisterCustomerUseCase;
 import com.fiap.tc.infrastructure.presentation.URLMapping;
 import com.fiap.tc.infrastructure.presentation.requests.CustomerRequest;
 import com.fiap.tc.infrastructure.presentation.response.CustomerResponse;
-import com.fiap.tc.core.application.ports.in.customer.DeleteCustomerInputPort;
-import com.fiap.tc.core.application.ports.in.customer.ListCustomersInputPort;
-import com.fiap.tc.core.application.ports.in.customer.LoadCustomerInputPort;
-import com.fiap.tc.core.application.ports.in.customer.RegisterCustomerInputPort;
 import io.swagger.annotations.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -26,20 +26,19 @@ import static org.springframework.http.ResponseEntity.ok;
 @Api(tags = "Customer API V1", produces = APPLICATION_JSON_VALUE, consumes = APPLICATION_JSON_VALUE, authorizations = @Authorization(value = "JWT"))
 public class CustomerController {
 
-    private final RegisterCustomerInputPort registerCustomerInputPort;
-    private final LoadCustomerInputPort loadCustomerInputPort;
-    private final ListCustomersInputPort listCustomersInputPort;
-    private final DeleteCustomerInputPort deleteCustomerInputPort;
+    private final RegisterCustomerUseCase registerCustomerUseCase;
+    private final LoadCustomerUseCase loadCustomerUseCase;
+    private final ListCustomersUseCase listCustomersUseCase;
+    private final DeleteCustomerUseCase deleteCustomerUseCase;
 
-    public CustomerController(
-            RegisterCustomerInputPort registerCustomerInputPort,
-            LoadCustomerInputPort loadCustomerInputPort,
-            ListCustomersInputPort listCustomersInputPort,
-            DeleteCustomerInputPort deleteCustomerInputPort) {
-        this.registerCustomerInputPort = registerCustomerInputPort;
-        this.loadCustomerInputPort = loadCustomerInputPort;
-        this.listCustomersInputPort = listCustomersInputPort;
-        this.deleteCustomerInputPort = deleteCustomerInputPort;
+    public CustomerController(RegisterCustomerUseCase registerCustomerUseCase,
+                              LoadCustomerUseCase loadCustomerUseCase,
+                              ListCustomersUseCase listCustomersUseCase,
+                              DeleteCustomerUseCase deleteCustomerUseCase) {
+        this.registerCustomerUseCase = registerCustomerUseCase;
+        this.loadCustomerUseCase = loadCustomerUseCase;
+        this.listCustomersUseCase = listCustomersUseCase;
+        this.deleteCustomerUseCase = deleteCustomerUseCase;
     }
 
     @ApiOperation(value = "list of customers", notes = "(Private Endpoint) This endpoint queries the entire customer database for potential promotional campaigns.")
@@ -52,7 +51,7 @@ public class CustomerController {
     @PreAuthorize("hasAuthority('LIST_CUSTOMERS')")
     public ResponseEntity<Page<CustomerResponse>> list(
             @ApiParam(required = true, value = "Pagination information") Pageable pageable) {
-        return ok(listCustomersInputPort.list(pageable).map(CUSTOMER_MAPPER::fromDomain));
+        return ok(listCustomersUseCase.list(pageable).map(CUSTOMER_MAPPER::fromDomain));
     }
 
     @ApiOperation(value = "create/update customer", notes = "(Public Endpoint) Customers are presented with a selection interface where they can choose to register using their name, email, and CPF. This endpoint is responsible for completing that registration.")
@@ -62,7 +61,7 @@ public class CustomerController {
     @PutMapping(produces = APPLICATION_JSON_VALUE, consumes = APPLICATION_JSON_VALUE, path = URLMapping.ROOT_PUBLIC_API_CUSTOMERS)
     public ResponseEntity<CustomerResponse> save(
             @ApiParam(value = "Customer details for saving/updating", required = true) @RequestBody @Valid CustomerRequest customerRequest) {
-        return ok(CUSTOMER_MAPPER.fromDomain(registerCustomerInputPort.register(customerRequest.getDocument(), customerRequest.getName(), customerRequest.getEmail())));
+        return ok(CUSTOMER_MAPPER.fromDomain(registerCustomerUseCase.register(customerRequest.getDocument(), customerRequest.getName(), customerRequest.getEmail())));
     }
 
     @ApiOperation(value = "get customer by cpf", notes = "(Public Endpoint) Customers are presented with a selection interface where they can choose to register using their name, email, and CPF. This endpoint is responsible for completing the registration.")
@@ -72,7 +71,7 @@ public class CustomerController {
     @GetMapping(path = URLMapping.ROOT_PUBLIC_API_CUSTOMERS + "/{document}")
     public ResponseEntity<CustomerResponse> get(
             @ApiParam(value = "Document of the customer to be retrieved", required = true) @PathVariable String document) {
-        return ok(CUSTOMER_MAPPER.fromDomain(loadCustomerInputPort.load(document)));
+        return ok(CUSTOMER_MAPPER.fromDomain(loadCustomerUseCase.load(document)));
     }
 
     @ApiOperation(value = "delete customer by cpf", notes = "(Private Endpoint) This endpoint is responsible for removing a customer by their CPF.")
@@ -85,7 +84,7 @@ public class CustomerController {
     @PreAuthorize("hasAuthority('DELETE_CUSTOMERS')")
     public ResponseEntity<Void> delete(
             @ApiParam(value = "Document of the customer to be deleted", required = true) @PathVariable String document) {
-        deleteCustomerInputPort.delete(document);
+        deleteCustomerUseCase.delete(document);
         return noContent().build();
     }
 }

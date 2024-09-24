@@ -1,25 +1,21 @@
 package com.fiap.tc.application.usecases.customer;
 
+import com.fiap.tc.application.gateways.CustomerGateway;
 import com.fiap.tc.domain.entities.Customer;
-import com.fiap.tc.core.application.ports.in.customer.ListCustomersInputPort;
-import com.fiap.tc.core.application.ports.out.customer.ListCustomersOutputPort;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
-@Slf4j
-public class ListCustomersUseCase implements ListCustomersInputPort {
+public class ListCustomersUseCase {
 
-    private final ListCustomersOutputPort listCustomersOutputPort;
+    private final CustomerGateway customerGateway;
 
-    public ListCustomersUseCase(ListCustomersOutputPort listCustomersOutputPort) {
-        this.listCustomersOutputPort = listCustomersOutputPort;
+    public ListCustomersUseCase(CustomerGateway customerGateway) {
+        this.customerGateway = customerGateway;
     }
 
-    @Override
     public Page<Customer> list(Pageable pageable) {
-        return listCustomersOutputPort.list(pageable);
+        return customerGateway.list(pageable);
     }
 }

@@ -1,23 +1,19 @@
 package com.fiap.tc.application.usecases.customer;
 
-import com.fiap.tc.core.application.ports.in.customer.RegisterCustomerInputPort;
-import com.fiap.tc.core.application.ports.out.customer.SaveCustomerOutputPort;
+import com.fiap.tc.application.gateways.CustomerGateway;
 import com.fiap.tc.domain.entities.Customer;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
-@Slf4j
-public class RegisterCustomerUseCase implements RegisterCustomerInputPort {
+public class RegisterCustomerUseCase {
 
-    private final SaveCustomerOutputPort saveCustomerOutputPort;
+    private final CustomerGateway customerGateway;
 
-    public RegisterCustomerUseCase(SaveCustomerOutputPort saveCustomerOutputPort) {
-        this.saveCustomerOutputPort = saveCustomerOutputPort;
+    public RegisterCustomerUseCase(CustomerGateway customerGateway) {
+        this.customerGateway = customerGateway;
     }
 
-    @Override
     public Customer register(String document, String name, String email) {
-        return saveCustomerOutputPort.saveOrUpdate(document, name, email);
+        return customerGateway.saveOrUpdate(document, name, email);
     }
 }

@@ -1,24 +1,19 @@
 package com.fiap.tc.application.usecases.customer;
 
+import com.fiap.tc.application.gateways.CustomerGateway;
 import com.fiap.tc.domain.entities.Customer;
-import com.fiap.tc.core.application.ports.in.customer.LoadCustomerInputPort;
-import com.fiap.tc.core.application.ports.out.customer.LoadCustomerOutputPort;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
-@Slf4j
-public class LoadCustomerUseCase implements LoadCustomerInputPort {
+public class LoadCustomerUseCase {
 
-    private final LoadCustomerOutputPort loadCustomerOutputPort;
+    private final CustomerGateway customerGateway;
 
-    public LoadCustomerUseCase(LoadCustomerOutputPort loadCustomerOutputPort) {
-        this.loadCustomerOutputPort = loadCustomerOutputPort;
+    public LoadCustomerUseCase(CustomerGateway customerGateway) {
+        this.customerGateway = customerGateway;
     }
 
-
-    @Override
     public Customer load(String document) {
-        return loadCustomerOutputPort.load(document);
+        return customerGateway.load(document);
     }
 }
