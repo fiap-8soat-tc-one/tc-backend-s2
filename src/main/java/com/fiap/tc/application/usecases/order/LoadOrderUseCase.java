@@ -1,4 +1,4 @@
-package com.fiap.tc.application.usecase.order;
+package com.fiap.tc.application.usecases.order;
 
 import com.fiap.tc.core.application.ports.in.order.LoadOrderInputPort;
 import com.fiap.tc.core.application.ports.out.order.LoadOrderOutputPort;

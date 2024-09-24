@@ -1,4 +1,4 @@
-package com.fiap.tc.application.usecase.customer;
+package com.fiap.tc.application.usecases.customer;
 
 import com.fiap.tc.core.application.ports.in.customer.RegisterCustomerInputPort;
 import com.fiap.tc.core.application.ports.out.customer.SaveCustomerOutputPort;

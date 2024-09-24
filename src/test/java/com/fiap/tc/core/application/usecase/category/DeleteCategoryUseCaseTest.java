@@ -1,6 +1,6 @@
 package com.fiap.tc.core.application.usecase.category;
 
-import com.fiap.tc.application.usecase.category.DeleteCategoryUseCase;
+import com.fiap.tc.application.usecases.category.DeleteCategoryUseCase;
 import com.fiap.tc.core.application.ports.out.category.DeleteCategoryOutputPort;
 import com.fiap.tc.fixture.FixtureTest;
 import org.junit.jupiter.api.Test;

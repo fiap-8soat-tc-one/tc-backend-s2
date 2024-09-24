@@ -1,4 +1,4 @@
-package com.fiap.tc.application.usecase.category;
+package com.fiap.tc.application.usecases.category;
 
 import com.fiap.tc.core.application.ports.in.category.LoadCategoryInputPort;
 import com.fiap.tc.domain.entities.Category;

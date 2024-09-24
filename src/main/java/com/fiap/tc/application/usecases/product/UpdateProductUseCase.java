@@ -1,4 +1,4 @@
-package com.fiap.tc.application.usecase.product;
+package com.fiap.tc.application.usecases.product;
 
 import com.fiap.tc.core.application.ports.in.product.UpdateProductInputPort;
 import com.fiap.tc.core.application.ports.out.product.UpdateProductOutputPort;

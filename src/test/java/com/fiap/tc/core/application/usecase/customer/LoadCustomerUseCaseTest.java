@@ -1,7 +1,7 @@
 package com.fiap.tc.core.application.usecase.customer;
 
 import br.com.six2six.fixturefactory.Fixture;
-import com.fiap.tc.application.usecase.customer.LoadCustomerUseCase;
+import com.fiap.tc.application.usecases.customer.LoadCustomerUseCase;
 import com.fiap.tc.domain.entities.Customer;
 import com.fiap.tc.core.application.ports.out.customer.LoadCustomerOutputPort;
 import com.fiap.tc.fixture.FixtureTest;

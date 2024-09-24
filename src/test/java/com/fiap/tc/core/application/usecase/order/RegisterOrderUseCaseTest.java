@@ -4,7 +4,7 @@ import br.com.six2six.fixturefactory.Fixture;
 import com.fiap.tc.infrastructure.gateways.mappers.base.MapperConstants;
 import com.fiap.tc.infrastructure.persistence.entities.OrderEntity;
 import com.fiap.tc.infrastructure.presentation.requests.OrderRequest;
-import com.fiap.tc.application.usecase.order.RegisterOrderUseCase;
+import com.fiap.tc.application.usecases.order.RegisterOrderUseCase;
 import com.fiap.tc.core.application.ports.out.order.RegisterOrderOutputPort;
 import com.fiap.tc.core.application.ports.out.payment.PaymentLinkOutputPort;
 import com.fiap.tc.fixture.FixtureTest;

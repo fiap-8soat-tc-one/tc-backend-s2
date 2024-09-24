@@ -2,7 +2,7 @@ package com.fiap.tc.core.application.usecase.product;
 
 import br.com.six2six.fixturefactory.Fixture;
 import com.fiap.tc.infrastructure.presentation.requests.DeleteProductImagesRequest;
-import com.fiap.tc.application.usecase.product.DeleteProductImagesUseCase;
+import com.fiap.tc.application.usecases.product.DeleteProductImagesUseCase;
 import com.fiap.tc.core.application.ports.out.product.DeleteProductImagesOutputPort;
 import com.fiap.tc.fixture.FixtureTest;
 import org.junit.jupiter.api.BeforeEach;

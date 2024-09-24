@@ -1,7 +1,7 @@
 package com.fiap.tc.core.application.usecase.payment;
 
 import br.com.six2six.fixturefactory.Fixture;
-import com.fiap.tc.application.usecase.payment.LoadPaymentUseCase;
+import com.fiap.tc.application.usecases.payment.LoadPaymentUseCase;
 import com.fiap.tc.core.application.ports.out.payment.LoadPaymentOutputPort;
 import com.fiap.tc.domain.entities.OrderPayment;
 import com.fiap.tc.fixture.FixtureTest;

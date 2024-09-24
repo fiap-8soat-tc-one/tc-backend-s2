@@ -1,4 +1,4 @@
-package com.fiap.tc.application.usecase.payment;
+package com.fiap.tc.application.usecases.payment;
 
 import com.fiap.tc.core.application.ports.in.payment.RegisterPaymentInputPort;
 import com.fiap.tc.core.application.ports.out.order.UpdateStatusOrderOutputPort;

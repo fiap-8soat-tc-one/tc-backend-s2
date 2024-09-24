@@ -1,4 +1,4 @@
-package com.fiap.tc.application.usecase.product;
+package com.fiap.tc.application.usecases.product;
 
 import com.fiap.tc.core.application.ports.in.product.RegisterProductImagesInputPort;
 import com.fiap.tc.core.application.ports.out.product.RegisterProductImagesOutputPort;

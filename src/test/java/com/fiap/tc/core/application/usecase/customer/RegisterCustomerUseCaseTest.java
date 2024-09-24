@@ -1,7 +1,7 @@
 package com.fiap.tc.core.application.usecase.customer;
 
 import br.com.six2six.fixturefactory.Fixture;
-import com.fiap.tc.application.usecase.customer.RegisterCustomerUseCase;
+import com.fiap.tc.application.usecases.customer.RegisterCustomerUseCase;
 import com.fiap.tc.domain.entities.Customer;
 import com.fiap.tc.infrastructure.presentation.requests.CustomerRequest;
 import com.fiap.tc.core.application.ports.out.customer.SaveCustomerOutputPort;
