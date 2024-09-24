@@ -11,6 +11,6 @@ public interface PaymentGatewayInterface {
 
     OrderPayment load(UUID idOrder);
 
-    void register(String transactionNumber, String transactionMessage, String transactionDocument,
-                  PaymentStatus result, PaymentType type, BigDecimal total);
+    OrderPayment register(String transactionNumber, String transactionMessage, String transactionDocument,
+                          PaymentStatus status, PaymentType type, BigDecimal total);
 }

@@ -20,5 +20,4 @@ public interface OrderGatewayInterface {
 
     void updateStatus(UUID idOrder, OrderStatus status);
 
-    void delete(UUID idCategory);
 }

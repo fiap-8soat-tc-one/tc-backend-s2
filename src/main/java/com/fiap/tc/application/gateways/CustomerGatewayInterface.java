@@ -10,7 +10,7 @@ public interface CustomerGatewayInterface {
 
     void delete(String document);
 
-    Customer register(String document, String name, String email);
+    Customer saveOrUpdate(String document, String name, String email);
 
     Page<Customer> list(Pageable pageable);
 }
