@@ -1,26 +1,21 @@
 package com.fiap.tc.application.usecases.category;
 
-import com.fiap.tc.core.application.ports.in.category.DeleteCategoryInputPort;
-import com.fiap.tc.core.application.ports.out.category.DeleteCategoryOutputPort;
-import lombok.extern.slf4j.Slf4j;
+import com.fiap.tc.application.gateways.CategoryGateway;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
 @Service
-@Slf4j
-public class DeleteCategoryUseCase implements DeleteCategoryInputPort {
+public class DeleteCategoryUseCase {
 
-    private final DeleteCategoryOutputPort deleteCategoryOutputPort;
+    private final CategoryGateway categoryGateway;
 
-    public DeleteCategoryUseCase(DeleteCategoryOutputPort deleteCategoryOutputPort) {
-        this.deleteCategoryOutputPort = deleteCategoryOutputPort;
+    public DeleteCategoryUseCase(CategoryGateway categoryGateway) {
+        this.categoryGateway = categoryGateway;
     }
 
-
-    @Override
-    public void delete(UUID uuid) {
-        this.deleteCategoryOutputPort.delete(uuid);
+    public void delete(UUID id) {
+        this.categoryGateway.delete(id);
     }
 }
 

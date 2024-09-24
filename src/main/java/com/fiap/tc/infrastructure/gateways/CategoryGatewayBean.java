@@ -1,6 +1,6 @@
 package com.fiap.tc.infrastructure.gateways;
 
-import com.fiap.tc.application.gateways.CategoryGatewayInterface;
+import com.fiap.tc.application.gateways.CategoryGateway;
 import com.fiap.tc.domain.entities.Category;
 import com.fiap.tc.domain.exceptions.BadRequestException;
 import com.fiap.tc.domain.exceptions.NotFoundException;
@@ -18,17 +18,21 @@ import static com.fiap.tc.infrastructure.gateways.mappers.base.MapperConstants.C
 import static java.lang.String.format;
 
 @Service
-public class CategoryGateway implements CategoryGatewayInterface {
+public class CategoryGatewayBean implements CategoryGateway {
 
     private final CategoryRepository repository;
 
-    public CategoryGateway(CategoryRepository repository) {
+    public CategoryGatewayBean(CategoryRepository repository) {
         this.repository = repository;
     }
 
     @Override
     public Category load(UUID id) {
-        return null;
+        var categoryEntityOptional = repository.findByUuid(id);
+        if (categoryEntityOptional.isEmpty()) {
+            throw new NotFoundException(format("Category with uuid %s not found!", id));
+        }
+        return CATEGORY_MAPPER.fromEntity(categoryEntityOptional.get());
     }
 
     @Override

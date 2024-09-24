@@ -6,7 +6,7 @@ import org.springframework.data.domain.Pageable;
 
 import java.util.UUID;
 
-public interface ProductGatewayInterface {
+public interface ProductGateway {
 
     Product load(UUID id);
 

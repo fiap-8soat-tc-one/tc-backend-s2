@@ -1,24 +1,20 @@
 package com.fiap.tc.application.usecases.category;
 
-import com.fiap.tc.core.application.ports.in.category.RegisterCategoryInputPort;
-import com.fiap.tc.core.application.ports.out.category.RegisterCategoryOutputPort;
+import com.fiap.tc.application.gateways.CategoryGateway;
 import com.fiap.tc.domain.entities.Category;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
-@Slf4j
-public class RegisterCategoryUseCase implements RegisterCategoryInputPort {
+public class RegisterCategoryUseCase {
 
-    private final RegisterCategoryOutputPort saveCategoryOutputPort;
+    private final CategoryGateway categoryGateway;
 
-    public RegisterCategoryUseCase(RegisterCategoryOutputPort saveCategoryOutputPort) {
-        this.saveCategoryOutputPort = saveCategoryOutputPort;
+    public RegisterCategoryUseCase(CategoryGateway categoryGateway) {
+        this.categoryGateway = categoryGateway;
     }
 
-    @Override
     public Category register(String name, String description) {
-        return saveCategoryOutputPort.saveOrUpdate(name, description);
+        return categoryGateway.register(name, description);
     }
 }
 

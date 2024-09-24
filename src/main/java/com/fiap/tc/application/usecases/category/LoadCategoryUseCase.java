@@ -1,27 +1,22 @@
 package com.fiap.tc.application.usecases.category;
 
-import com.fiap.tc.core.application.ports.in.category.LoadCategoryInputPort;
+import com.fiap.tc.application.gateways.CategoryGateway;
 import com.fiap.tc.domain.entities.Category;
-import com.fiap.tc.core.application.ports.out.category.LoadCategoryOutputPort;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
 @Service
-@Slf4j
-public class LoadCategoryUseCase implements LoadCategoryInputPort {
+public class LoadCategoryUseCase {
 
-    private final LoadCategoryOutputPort loadCategoryOutputPort;
+    private final CategoryGateway categoryGateway;
 
-    public LoadCategoryUseCase(LoadCategoryOutputPort loadCategoryOutputPort) {
-        this.loadCategoryOutputPort = loadCategoryOutputPort;
+    public LoadCategoryUseCase(CategoryGateway categoryGateway) {
+        this.categoryGateway = categoryGateway;
     }
 
-
-    @Override
-    public Category load(UUID uuid) {
-        return loadCategoryOutputPort.load(uuid);
+    public Category load(UUID id) {
+        return categoryGateway.load(id);
     }
 }
 

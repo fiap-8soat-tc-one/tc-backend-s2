@@ -1,6 +1,6 @@
 package com.fiap.tc.infrastructure.gateways;
 
-import com.fiap.tc.application.gateways.OrderGatewayInterface;
+import com.fiap.tc.application.gateways.OrderGateway;
 import com.fiap.tc.domain.entities.Order;
 import com.fiap.tc.domain.entities.OrderItem;
 import com.fiap.tc.domain.entities.OrderList;
@@ -30,13 +30,13 @@ import static java.math.BigDecimal.valueOf;
 import static org.springframework.util.CollectionUtils.isEmpty;
 
 @Service
-public class OrderGateway implements OrderGatewayInterface {
+public class OrderGatewayBean implements OrderGateway {
     public static final int ORDER_NUMBER_MIN_LENGTH = 4;
     private final OrderRepository repository;
     private final CustomerRepository customerRepository;
     private final ProductRepository productRepository;
 
-    public OrderGateway(OrderRepository repository, CustomerRepository customerRepository, ProductRepository productRepository) {
+    public OrderGatewayBean(OrderRepository repository, CustomerRepository customerRepository, ProductRepository productRepository) {
         this.repository = repository;
         this.customerRepository = customerRepository;
         this.productRepository = productRepository;

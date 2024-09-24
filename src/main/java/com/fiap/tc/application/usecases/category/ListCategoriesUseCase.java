@@ -1,26 +1,22 @@
 package com.fiap.tc.application.usecases.category;
 
-import com.fiap.tc.core.application.ports.in.category.ListCategoriesInputPort;
+import com.fiap.tc.application.gateways.CategoryGateway;
 import com.fiap.tc.domain.entities.Category;
-import com.fiap.tc.core.application.ports.out.category.ListCategoriesOutputPort;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
-@Slf4j
-public class ListCategoriesUseCase implements ListCategoriesInputPort {
+public class ListCategoriesUseCase {
 
-    private final ListCategoriesOutputPort listCategoriesOutputPort;
+    private final CategoryGateway categoryGateway;
 
-    public ListCategoriesUseCase(ListCategoriesOutputPort listCategoriesOutputPort) {
-        this.listCategoriesOutputPort = listCategoriesOutputPort;
+    public ListCategoriesUseCase(CategoryGateway categoryGateway) {
+        this.categoryGateway = categoryGateway;
     }
 
-    @Override
     public Page<Category> list(Pageable pageable) {
-        return listCategoriesOutputPort.list(pageable);
+        return categoryGateway.list(pageable);
     }
 }
 
