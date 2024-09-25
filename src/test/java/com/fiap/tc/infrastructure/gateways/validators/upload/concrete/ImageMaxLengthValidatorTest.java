@@ -1,7 +1,7 @@
-package com.fiap.tc.adapters.repository.output.validator.upload.concrete;
+package com.fiap.tc.infrastructure.gateways.validators.upload.concrete;
 
 import br.com.six2six.fixturefactory.Fixture;
-import com.fiap.tc.infrastructure.gateways.validators.upload.concrete.ProductImagesMaxSizeValidator;
+import com.fiap.tc.infrastructure.gateways.validators.upload.concrete.ImageMaxLengthValidator;
 import com.fiap.tc.infrastructure.persistence.entities.ProductEntity;
 import com.fiap.tc.infrastructure.gateways.validators.upload.ProductImageValidatorWrapper;
 import com.fiap.tc.infrastructure.core.security.configurations.UploadConfig;
@@ -16,27 +16,29 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @ExtendWith(MockitoExtension.class)
-public class ProductImagesMaxSizeValidatorTest extends FixtureTest {
+public class ImageMaxLengthValidatorTest extends FixtureTest {
 
     private UploadConfig uploadConfig;
 
-    private ProductImagesMaxSizeValidator productImagesMaxSizeValidator;
+    private ImageMaxLengthValidator imageMaxLengthValidator;
 
     private ProductImageValidatorWrapper wrapper;
     private List<String> errors;
     private ProductEntity productEntity;
     private List<ProductImage> productImageList;
+    private List<ProductImage> productWithInvalidImageList;
 
     @BeforeEach
     public void setUp() {
         productEntity = Fixture.from(ProductEntity.class).gimme("with-images");
         productImageList = Fixture.from(ProductImage.class).gimme(1, "valid");
+        productWithInvalidImageList = Fixture.from(ProductImage.class).gimme(1, "invalid");
         errors = new ArrayList<>();
         wrapper = ProductImageValidatorWrapper.builder()
                 .productEntity(productEntity)
@@ -47,38 +49,44 @@ public class ProductImagesMaxSizeValidatorTest extends FixtureTest {
 
         uploadConfig = Mockito.spy(UploadConfig.builder()
                 .maxProductImages(1)
-                .maxLength(20000)
+                .maxLength(2000)
                 .mimeTypes(List.of("data:image/gif;base64"))
                 .build());
-
-
-        productImagesMaxSizeValidator = new ProductImagesMaxSizeValidator(uploadConfig);
-
     }
 
     @Test
-    public void launchExceptionOnValidateMaxImagesWhenReachLimitTest() {
+    public void getErrorMessageWhenMaxLengthReachedTest() {
+        imageMaxLengthValidator = new ImageMaxLengthValidator(uploadConfig);
+        imageMaxLengthValidator.execute(wrapper, errors);
+        assertEquals(1, errors.size());
+    }
+
+    @Test
+    public void launchErrorOnValidateWhenInvalidImageTest() {
+        wrapper = ProductImageValidatorWrapper.builder()
+                .productEntity(productEntity)
+                .uploadListSize(productWithInvalidImageList.size())
+                .productImage(productWithInvalidImageList.get(0))
+                .build();
+
+        imageMaxLengthValidator = new ImageMaxLengthValidator(uploadConfig);
+
         var assertThrows = Assertions.assertThrows(BadRequestException.class,
-                () -> productImagesMaxSizeValidator.execute(wrapper, errors));
+                () -> imageMaxLengthValidator.execute(wrapper, errors));
 
-        assertTrue(assertThrows.getMessage().contains("max product images reached"));
+
+        assertTrue(assertThrows.getMessage().contains("Invalid image"));
     }
 
     @Test
-    public void executeValidateMaxImagesJustForCoverageTest() {
-        wrapper.getProductEntity().setImages(Collections.emptyList());
+    public void executeMaxLengthValidatorWhenValidLengthTest() {
 
-        productImagesMaxSizeValidator.execute(wrapper, errors);
-    }
+        uploadConfig.setMaxLength(100000);
+        imageMaxLengthValidator = new ImageMaxLengthValidator(uploadConfig);
 
-    @Test
-    public void executeValidateMaxImagesWhenNotReachLimitTest() {
-        uploadConfig.setMaxProductImages(2);
-        productImagesMaxSizeValidator = new ProductImagesMaxSizeValidator(uploadConfig);
-        productImagesMaxSizeValidator.execute(wrapper, errors);
+        imageMaxLengthValidator.execute(wrapper, errors);
 
-        Mockito.verify(uploadConfig).getMaxProductImages();
-
+        assertEquals(0, errors.size());
     }
 
 }

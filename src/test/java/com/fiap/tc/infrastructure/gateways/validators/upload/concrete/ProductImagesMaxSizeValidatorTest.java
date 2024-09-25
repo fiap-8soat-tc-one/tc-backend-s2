@@ -1,12 +1,14 @@
-package com.fiap.tc.adapters.repository.output.validator.upload.concrete;
+package com.fiap.tc.infrastructure.gateways.validators.upload.concrete;
 
 import br.com.six2six.fixturefactory.Fixture;
-import com.fiap.tc.infrastructure.gateways.validators.upload.concrete.ImageExtensionValidator;
+import com.fiap.tc.infrastructure.gateways.validators.upload.concrete.ProductImagesMaxSizeValidator;
 import com.fiap.tc.infrastructure.persistence.entities.ProductEntity;
 import com.fiap.tc.infrastructure.gateways.validators.upload.ProductImageValidatorWrapper;
 import com.fiap.tc.infrastructure.core.security.configurations.UploadConfig;
+import com.fiap.tc.domain.exceptions.BadRequestException;
 import com.fiap.tc.domain.entities.ProductImage;
 import com.fiap.tc.fixture.FixtureTest;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -14,16 +16,17 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @ExtendWith(MockitoExtension.class)
-public class ImageExtensionValidatorTest extends FixtureTest {
+public class ProductImagesMaxSizeValidatorTest extends FixtureTest {
 
     private UploadConfig uploadConfig;
 
-    private ImageExtensionValidator imageExtensionValidator;
+    private ProductImagesMaxSizeValidator productImagesMaxSizeValidator;
 
     private ProductImageValidatorWrapper wrapper;
     private List<String> errors;
@@ -47,23 +50,35 @@ public class ImageExtensionValidatorTest extends FixtureTest {
                 .maxLength(20000)
                 .mimeTypes(List.of("data:image/gif;base64"))
                 .build());
+
+
+        productImagesMaxSizeValidator = new ProductImagesMaxSizeValidator(uploadConfig);
+
     }
 
     @Test
-    public void getErrorMessageImageExtensionWhenInvalidExtensionTest() {
-        imageExtensionValidator = new ImageExtensionValidator(uploadConfig);
-        imageExtensionValidator.execute(wrapper, errors);
-        assertEquals(1, errors.size());
+    public void launchExceptionOnValidateMaxImagesWhenReachLimitTest() {
+        var assertThrows = Assertions.assertThrows(BadRequestException.class,
+                () -> productImagesMaxSizeValidator.execute(wrapper, errors));
+
+        assertTrue(assertThrows.getMessage().contains("max product images reached"));
     }
 
     @Test
-    public void executeImageExtensionValidatorWhenValidExtensionTest() {
-        uploadConfig.setMimeTypes(List.of("data:image/jpeg;base64" ));
-        imageExtensionValidator = new ImageExtensionValidator(uploadConfig);
+    public void executeValidateMaxImagesJustForCoverageTest() {
+        wrapper.getProductEntity().setImages(Collections.emptyList());
 
-        imageExtensionValidator.execute(wrapper, errors);
+        productImagesMaxSizeValidator.execute(wrapper, errors);
+    }
 
-        assertEquals(0, errors.size());
+    @Test
+    public void executeValidateMaxImagesWhenNotReachLimitTest() {
+        uploadConfig.setMaxProductImages(2);
+        productImagesMaxSizeValidator = new ProductImagesMaxSizeValidator(uploadConfig);
+        productImagesMaxSizeValidator.execute(wrapper, errors);
+
+        Mockito.verify(uploadConfig).getMaxProductImages();
+
     }
 
 }

@@ -1,4 +1,4 @@
-package com.fiap.tc.adapters.repository.output.validator.order.concrete;
+package com.fiap.tc.infrastructure.gateways.validators.order.concrete;
 
 import com.fiap.tc.infrastructure.gateways.validators.order.concrete.ReadyOrderStatusValidator;
 import com.fiap.tc.domain.exceptions.BadRequestException;

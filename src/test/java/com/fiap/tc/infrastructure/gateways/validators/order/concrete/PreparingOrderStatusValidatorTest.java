@@ -1,6 +1,6 @@
-package com.fiap.tc.adapters.repository.output.validator.order.concrete;
+package com.fiap.tc.infrastructure.gateways.validators.order.concrete;
 
-import com.fiap.tc.infrastructure.gateways.validators.order.concrete.ReceivedOrderStatusValidator;
+import com.fiap.tc.infrastructure.gateways.validators.order.concrete.PreparingOrderStatusValidator;
 import com.fiap.tc.domain.exceptions.BadRequestException;
 import com.fiap.tc.domain.enums.OrderStatus;
 import org.junit.jupiter.api.Test;
@@ -11,26 +11,21 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @ExtendWith(MockitoExtension.class)
-public class ReceivedOrderStatusValidatorTest {
+public class PreparingOrderStatusValidatorTest {
     @Test
     public void transitionToPreparingAllowedStatusTest() {
-        new ReceivedOrderStatusValidator().validate(OrderStatus.PREPARING);
-    }
-
-    @Test
-    public void transitionToPendingAllowedStatusTest() {
-        new ReceivedOrderStatusValidator().validate(OrderStatus.PENDING);
+        new PreparingOrderStatusValidator().validate(OrderStatus.READY);
     }
 
     @Test
     public void transitionToCanceledAllowedStatusTest() {
-        new ReceivedOrderStatusValidator().validate(OrderStatus.CANCELED);
+        new PreparingOrderStatusValidator().validate(OrderStatus.CANCELED);
     }
 
     @Test
-    public void transitionToFinishedInvalidStatusTest() {
+    public void transitionToReadyInvalidStatusTest() {
         var assertThrows = assertThrows(BadRequestException.class,
-                () -> new ReceivedOrderStatusValidator().validate(OrderStatus.FINISHED));
+                () -> new PreparingOrderStatusValidator().validate(OrderStatus.PREPARING));
 
         assertTrue(assertThrows.getMessage().contains("invalid next state"));
     }

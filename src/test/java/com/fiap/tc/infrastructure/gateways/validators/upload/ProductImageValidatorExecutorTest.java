@@ -1,4 +1,4 @@
-package com.fiap.tc.adapters.repository.output.validator.upload;
+package com.fiap.tc.infrastructure.gateways.validators.upload;
 
 import br.com.six2six.fixturefactory.Fixture;
 import com.fiap.tc.infrastructure.gateways.validators.upload.ProductImageValidator;
