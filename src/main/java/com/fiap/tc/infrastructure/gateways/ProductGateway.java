@@ -1,6 +1,6 @@
 package com.fiap.tc.infrastructure.gateways;
 
-import com.fiap.tc.application.gateways.ProductGateway;
+import com.fiap.tc.application.gateways.IProductGateway;
 import com.fiap.tc.domain.entities.Product;
 import com.fiap.tc.domain.exceptions.BadRequestException;
 import com.fiap.tc.domain.exceptions.NotFoundException;
@@ -20,12 +20,12 @@ import static com.fiap.tc.infrastructure.gateways.mappers.base.MapperConstants.P
 import static java.lang.String.format;
 
 @Service
-public class ProductGatewayBean implements ProductGateway {
+public class ProductGateway implements IProductGateway {
 
     private final ProductRepository repository;
     private final CategoryRepository categoryRepository;
 
-    public ProductGatewayBean(ProductRepository repository, CategoryRepository categoryRepository) {
+    public ProductGateway(ProductRepository repository, CategoryRepository categoryRepository) {
         this.repository = repository;
         this.categoryRepository = categoryRepository;
     }

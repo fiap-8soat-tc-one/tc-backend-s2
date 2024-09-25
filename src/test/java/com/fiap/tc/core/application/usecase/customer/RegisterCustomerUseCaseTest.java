@@ -1,7 +1,7 @@
 package com.fiap.tc.core.application.usecase.customer;
 
 import br.com.six2six.fixturefactory.Fixture;
-import com.fiap.tc.application.gateways.CustomerGateway;
+import com.fiap.tc.application.gateways.ICustomerGateway;
 import com.fiap.tc.application.usecases.customer.RegisterCustomerUseCase;
 import com.fiap.tc.domain.entities.Customer;
 import com.fiap.tc.fixture.FixtureTest;
@@ -21,7 +21,7 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 public class RegisterCustomerUseCaseTest extends FixtureTest {
     @Mock
-    private CustomerGateway customerGateway;
+    private ICustomerGateway customerGateway;
 
     @InjectMocks
     private RegisterCustomerUseCase registerCustomerUseCase;

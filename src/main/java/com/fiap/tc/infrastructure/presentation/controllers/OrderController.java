@@ -1,15 +1,15 @@
 package com.fiap.tc.infrastructure.presentation.controllers;
 
+import com.fiap.tc.application.usecases.order.ListOrdersUseCase;
+import com.fiap.tc.application.usecases.order.LoadOrderUseCase;
+import com.fiap.tc.application.usecases.order.RegisterOrderUseCase;
+import com.fiap.tc.application.usecases.order.UpdateStatusOrderUseCase;
 import com.fiap.tc.infrastructure.presentation.URLMapping;
 import com.fiap.tc.infrastructure.presentation.requests.OrderRequest;
 import com.fiap.tc.infrastructure.presentation.requests.OrderStatusRequest;
 import com.fiap.tc.infrastructure.presentation.response.DefaultResponse;
 import com.fiap.tc.infrastructure.presentation.response.OrderListResponse;
 import com.fiap.tc.infrastructure.presentation.response.OrderResponse;
-import com.fiap.tc.core.application.ports.in.order.ListOrdersInputPort;
-import com.fiap.tc.core.application.ports.in.order.LoadOrderInputPort;
-import com.fiap.tc.core.application.ports.in.order.RegisterOrderInputPort;
-import com.fiap.tc.core.application.ports.in.order.UpdateStatusOrderInputPort;
 import io.swagger.annotations.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -29,19 +29,19 @@ import static org.springframework.http.ResponseEntity.ok;
 @Api(tags = "Orders API V1", produces = APPLICATION_JSON_VALUE)
 public class OrderController {
 
-    private final RegisterOrderInputPort registerOrderInputPort;
-    private final LoadOrderInputPort loadOrderInputPort;
-    private final UpdateStatusOrderInputPort updateStatusOrderInputPort;
-    private final ListOrdersInputPort listOrdersInputPort;
+    private final RegisterOrderUseCase registerOrderUseCase;
+    private final LoadOrderUseCase loadOrderUseCase;
+    private final UpdateStatusOrderUseCase updateStatusOrderUseCase;
+    private final ListOrdersUseCase listOrdersUseCase;
 
-    public OrderController(RegisterOrderInputPort registerOrderInputPort,
-                           LoadOrderInputPort loadOrderInputPort,
-                           UpdateStatusOrderInputPort updateStatusOrderInputPort,
-                           ListOrdersInputPort listOrdersInputPort) {
-        this.registerOrderInputPort = registerOrderInputPort;
-        this.loadOrderInputPort = loadOrderInputPort;
-        this.updateStatusOrderInputPort = updateStatusOrderInputPort;
-        this.listOrdersInputPort = listOrdersInputPort;
+    public OrderController(RegisterOrderUseCase registerOrderUseCase,
+                           LoadOrderUseCase loadOrderUseCase,
+                           UpdateStatusOrderUseCase updateStatusOrderUseCase,
+                           ListOrdersUseCase listOrdersUseCase) {
+        this.registerOrderUseCase = registerOrderUseCase;
+        this.loadOrderUseCase = loadOrderUseCase;
+        this.updateStatusOrderUseCase = updateStatusOrderUseCase;
+        this.listOrdersUseCase = listOrdersUseCase;
     }
 
     @ApiOperation(value = "Find Order")
@@ -51,7 +51,7 @@ public class OrderController {
     @GetMapping(path = URLMapping.ROOT_PRIVATE_API_ORDERS + "/{id}")
     @PreAuthorize("hasAuthority('SEARCH_ORDERS')")
     public ResponseEntity<OrderResponse> get(@PathVariable UUID id) {
-        return ok(ORDER_RESPONSE_MAPPER.fromDomain(loadOrderInputPort.load(id)));
+        return ok(ORDER_RESPONSE_MAPPER.fromDomain(loadOrderUseCase.load(id)));
     }
 
     @ApiOperation(value = "create order", notes = "(Public Endpoint) This endpoint is responsible for creating the order, receiving the product identifiers and their quantities.")
@@ -64,7 +64,7 @@ public class OrderController {
 
         var listOfItems = request.getOrderItems().stream().map(ORDER_ITEM_MAPPER::toDomain).toList();
 
-        return ok(ORDER_RESPONSE_MAPPER.fromDomain(registerOrderInputPort.register(request.getIdCustomer(), listOfItems)));
+        return ok(ORDER_RESPONSE_MAPPER.fromDomain(registerOrderUseCase.register(request.getIdCustomer(), listOfItems)));
     }
 
     @ApiOperation(value = "update order status", notes = "(Private Endpoint) This endpoint is responsible for updating the order status for tracking by both the kitchen and the customer (reflected on the system monitor).")
@@ -76,7 +76,7 @@ public class OrderController {
     @PutMapping(path = URLMapping.ROOT_PRIVATE_API_ORDERS + "/status", produces = APPLICATION_JSON_VALUE, consumes = APPLICATION_JSON_VALUE)
     @PreAuthorize("hasAuthority('UPDATE_STATUS_ORDERS')")
     public ResponseEntity<DefaultResponse> updateStatus(@ApiParam(value = "Order status update details", required = true) @RequestBody @Valid OrderStatusRequest request) {
-        updateStatusOrderInputPort.update(request.getId(), request.getStatus());
+        updateStatusOrderUseCase.update(request.getId(), request.getStatus());
         return ok(new DefaultResponse());
     }
 
@@ -89,6 +89,6 @@ public class OrderController {
     @GetMapping(path = URLMapping.ROOT_PRIVATE_API_ORDERS)
     @PreAuthorize("hasAuthority('LIST_ORDERS')")
     public ResponseEntity<Page<OrderListResponse>> list(@ApiParam(required = true, value = "Orders Pagination") Pageable pageable) {
-        return ok(listOrdersInputPort.list(pageable).map(ORDER_LIST_MAPPER::fromDomain));
+        return ok(listOrdersUseCase.list(pageable).map(ORDER_LIST_MAPPER::fromDomain));
     }
 }

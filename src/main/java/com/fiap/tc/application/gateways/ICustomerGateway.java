@@ -4,7 +4,7 @@ import com.fiap.tc.domain.entities.Customer;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-public interface CustomerGateway {
+public interface ICustomerGateway {
 
     Customer load(String document);
 

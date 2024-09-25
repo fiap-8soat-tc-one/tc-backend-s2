@@ -37,7 +37,7 @@ public class CategoryGatewayTests extends FixtureTest {
     private CategoryRepository repository;
 
     @InjectMocks
-    private CategoryGatewayBean categoryGateway;
+    private CategoryGateway categoryGateway;
 
     private CategoryEntity categoryEntity;
 

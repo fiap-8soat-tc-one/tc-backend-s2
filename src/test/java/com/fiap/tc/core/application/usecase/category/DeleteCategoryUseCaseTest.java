@@ -1,6 +1,6 @@
 package com.fiap.tc.core.application.usecase.category;
 
-import com.fiap.tc.application.gateways.CategoryGateway;
+import com.fiap.tc.application.gateways.ICategoryGateway;
 import com.fiap.tc.application.usecases.category.DeleteCategoryUseCase;
 import com.fiap.tc.fixture.FixtureTest;
 import org.junit.jupiter.api.Test;
@@ -16,7 +16,7 @@ import java.util.UUID;
 public class DeleteCategoryUseCaseTest extends FixtureTest {
 
     @Mock
-    private CategoryGateway categoryGateway;
+    private ICategoryGateway categoryGateway;
     @InjectMocks
     private DeleteCategoryUseCase deleteCategoryUseCase;
 

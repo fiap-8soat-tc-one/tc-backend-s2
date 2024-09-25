@@ -1,6 +1,6 @@
 package com.fiap.tc.infrastructure.gateways;
 
-import com.fiap.tc.application.gateways.PaymentGateway;
+import com.fiap.tc.application.gateways.IPaymentGateway;
 import com.fiap.tc.domain.entities.OrderPayment;
 import com.fiap.tc.domain.enums.PaymentStatus;
 import com.fiap.tc.domain.enums.PaymentType;
@@ -22,11 +22,11 @@ import java.util.UUID;
 import static java.lang.String.format;
 
 @Service
-public class PaymentGatewayBean implements PaymentGateway {
+public class PaymentGateway implements IPaymentGateway {
     private final OrderPaymentRepository repository;
     private final OrderRepository orderRepository;
 
-    public PaymentGatewayBean(OrderPaymentRepository repository, OrderRepository orderRepository) {
+    public PaymentGateway(OrderPaymentRepository repository, OrderRepository orderRepository) {
         this.repository = repository;
         this.orderRepository = orderRepository;
     }
@@ -60,6 +60,7 @@ public class PaymentGatewayBean implements PaymentGateway {
 
         return newOrderPayment(transactionNumber, transactionMessage, transactionDocument, status, type, orderEntity);
     }
+
 
     private OrderPayment newOrderPayment(String transactionNumber, String transactionMessage,
                                          String transactionDocument, PaymentStatus status, PaymentType type,

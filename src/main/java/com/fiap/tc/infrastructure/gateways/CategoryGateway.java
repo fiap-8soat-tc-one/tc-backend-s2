@@ -1,6 +1,6 @@
 package com.fiap.tc.infrastructure.gateways;
 
-import com.fiap.tc.application.gateways.CategoryGateway;
+import com.fiap.tc.application.gateways.ICategoryGateway;
 import com.fiap.tc.domain.entities.Category;
 import com.fiap.tc.domain.exceptions.BadRequestException;
 import com.fiap.tc.domain.exceptions.NotFoundException;
@@ -18,11 +18,11 @@ import static com.fiap.tc.infrastructure.gateways.mappers.base.MapperConstants.C
 import static java.lang.String.format;
 
 @Service
-public class CategoryGatewayBean implements CategoryGateway {
+public class CategoryGateway implements ICategoryGateway {
 
     private final CategoryRepository repository;
 
-    public CategoryGatewayBean(CategoryRepository repository) {
+    public CategoryGateway(CategoryRepository repository) {
         this.repository = repository;
     }
 

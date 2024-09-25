@@ -1,23 +1,21 @@
 package com.fiap.tc.application.usecases.order;
 
-import com.fiap.tc.core.application.ports.in.order.UpdateStatusOrderInputPort;
-import com.fiap.tc.core.application.ports.out.order.UpdateStatusOrderOutputPort;
+import com.fiap.tc.application.gateways.IOrderGateway;
 import com.fiap.tc.domain.enums.OrderStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
 @Service
-public class UpdateStatusOrderUseCase implements UpdateStatusOrderInputPort {
+public class UpdateStatusOrderUseCase {
 
-    private final UpdateStatusOrderOutputPort updateStatusOrderOutputPort;
+    private final IOrderGateway orderGateway;
 
-    public UpdateStatusOrderUseCase(UpdateStatusOrderOutputPort updateStatusOrderOutputPort) {
-        this.updateStatusOrderOutputPort = updateStatusOrderOutputPort;
+    public UpdateStatusOrderUseCase(IOrderGateway orderGateway) {
+        this.orderGateway = orderGateway;
     }
 
-    @Override
     public void update(UUID id, OrderStatus status) {
-        updateStatusOrderOutputPort.update(id, status);
+        orderGateway.updateStatus(id, status);
     }
 }

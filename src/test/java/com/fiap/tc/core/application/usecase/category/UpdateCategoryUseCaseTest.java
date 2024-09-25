@@ -1,7 +1,7 @@
 package com.fiap.tc.core.application.usecase.category;
 
 import br.com.six2six.fixturefactory.Fixture;
-import com.fiap.tc.application.gateways.CategoryGateway;
+import com.fiap.tc.application.gateways.ICategoryGateway;
 import com.fiap.tc.application.usecases.category.UpdateCategoryUseCase;
 import com.fiap.tc.domain.entities.Category;
 import com.fiap.tc.fixture.FixtureTest;
@@ -23,7 +23,7 @@ public class UpdateCategoryUseCaseTest extends FixtureTest {
 
     public static final UUID ID_CATEGORY = UUID.randomUUID();
     @Mock
-    private CategoryGateway categoryGateway;
+    private ICategoryGateway categoryGateway;
 
     @InjectMocks
     private UpdateCategoryUseCase updateCategoryUseCase;

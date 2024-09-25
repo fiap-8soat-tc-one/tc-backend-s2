@@ -1,9 +1,7 @@
 package com.fiap.tc.application.usecases.order;
 
-import com.fiap.tc.core.application.ports.in.order.ListOrdersInputPort;
-import com.fiap.tc.core.application.ports.out.order.ListOrdersOutputPort;
+import com.fiap.tc.application.gateways.IOrderGateway;
 import com.fiap.tc.domain.entities.OrderList;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -13,18 +11,16 @@ import java.util.List;
 import static com.fiap.tc.domain.enums.OrderStatus.*;
 
 @Service
-@Slf4j
-public class ListOrdersUseCase implements ListOrdersInputPort {
+public class ListOrdersUseCase {
 
-    private final ListOrdersOutputPort listOrdersOutputPort;
+    private final IOrderGateway orderGateway;
 
-    public ListOrdersUseCase(ListOrdersOutputPort listOrdersOutputPort) {
-        this.listOrdersOutputPort = listOrdersOutputPort;
+    public ListOrdersUseCase(IOrderGateway orderGateway) {
+        this.orderGateway = orderGateway;
     }
 
-    @Override
     public Page<OrderList> list(Pageable pageable) {
-        return listOrdersOutputPort.list(List.of(READY.name(), PREPARING.name(), RECEIVED.name()),
+        return orderGateway.list(List.of(READY.name(), PREPARING.name(), RECEIVED.name()),
                 pageable);
     }
 }

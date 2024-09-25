@@ -1,7 +1,7 @@
 package com.fiap.tc.core.application.usecase.order;
 
+import com.fiap.tc.application.gateways.IOrderGateway;
 import com.fiap.tc.application.usecases.order.ListOrdersUseCase;
-import com.fiap.tc.core.application.ports.out.order.ListOrdersOutputPort;
 import com.fiap.tc.fixture.FixtureTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -20,7 +20,7 @@ import static org.mockito.Mockito.verify;
 public class ListOrdersUseCaseTest extends FixtureTest {
 
     @Mock
-    private ListOrdersOutputPort listOrdersOutputPort;
+    private IOrderGateway orderGateway;
 
     @InjectMocks
     private ListOrdersUseCase listOrdersUseCase;
@@ -29,7 +29,7 @@ public class ListOrdersUseCaseTest extends FixtureTest {
     public void listOrdersTest() {
         var pageable = Mockito.mock(Pageable.class);
         listOrdersUseCase.list(pageable);
-        verify(listOrdersOutputPort).list(List.of(READY.name(), PREPARING.name(), RECEIVED.name()),
+        verify(orderGateway).list(List.of(READY.name(), PREPARING.name(), RECEIVED.name()),
                 pageable);
     }
 }

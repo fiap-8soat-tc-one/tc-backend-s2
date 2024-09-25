@@ -10,7 +10,7 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 import java.util.UUID;
 
-public interface OrderGateway {
+public interface IOrderGateway {
 
     Order load(UUID id);
 

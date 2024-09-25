@@ -1,15 +1,15 @@
 package com.fiap.tc.application.usecases.customer;
 
-import com.fiap.tc.application.gateways.CustomerGateway;
+import com.fiap.tc.application.gateways.ICustomerGateway;
 import com.fiap.tc.domain.entities.Customer;
 import org.springframework.stereotype.Service;
 
 @Service
 public class LoadCustomerUseCase {
 
-    private final CustomerGateway customerGateway;
+    private final ICustomerGateway customerGateway;
 
-    public LoadCustomerUseCase(CustomerGateway customerGateway) {
+    public LoadCustomerUseCase(ICustomerGateway customerGateway) {
         this.customerGateway = customerGateway;
     }
 

@@ -6,7 +6,7 @@ import org.springframework.data.domain.Pageable;
 
 import java.util.UUID;
 
-public interface CategoryGateway {
+public interface ICategoryGateway {
 
     Category load(UUID id);
 

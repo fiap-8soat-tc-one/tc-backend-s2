@@ -1,13 +1,13 @@
 package com.fiap.tc.core.application.usecase.order;
 
 import br.com.six2six.fixturefactory.Fixture;
+import com.fiap.tc.application.gateways.IOrderGateway;
+import com.fiap.tc.application.gateways.IPaymentLinkGateway;
+import com.fiap.tc.application.usecases.order.RegisterOrderUseCase;
+import com.fiap.tc.fixture.FixtureTest;
 import com.fiap.tc.infrastructure.gateways.mappers.base.MapperConstants;
 import com.fiap.tc.infrastructure.persistence.entities.OrderEntity;
 import com.fiap.tc.infrastructure.presentation.requests.OrderRequest;
-import com.fiap.tc.application.usecases.order.RegisterOrderUseCase;
-import com.fiap.tc.core.application.ports.out.order.RegisterOrderOutputPort;
-import com.fiap.tc.core.application.ports.out.payment.PaymentLinkOutputPort;
-import com.fiap.tc.fixture.FixtureTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -27,10 +27,10 @@ import static org.mockito.Mockito.when;
 public class RegisterOrderUseCaseTest extends FixtureTest {
 
     @Mock
-    private RegisterOrderOutputPort registerOrderOutputPort;
+    private IOrderGateway orderGateway;
 
     @Mock
-    private PaymentLinkOutputPort paymentLinkOutputPort;
+    private IPaymentLinkGateway paymentLinkGateway;
 
     @InjectMocks
     private RegisterOrderUseCase registerOrderUseCase;
@@ -48,13 +48,13 @@ public class RegisterOrderUseCaseTest extends FixtureTest {
     public void registerOrderTest() {
         var order = MapperConstants.ORDER_MAPPER.fromEntity(orderEntity);
         var orderList = request.getOrderItems().stream().map(ORDER_ITEM_MAPPER::toDomain).toList();
-        when(paymentLinkOutputPort.generate(order)).thenReturn(Optional.of("payment link"));
-        when(registerOrderOutputPort.save(request.getIdCustomer(), orderList)).thenReturn(order);
+        when(paymentLinkGateway.generate(order)).thenReturn(Optional.of("payment link"));
+        when(orderGateway.register(request.getIdCustomer(), orderList)).thenReturn(order);
 
         var orderResponse = registerOrderUseCase.register(request.getIdCustomer(), orderList);
 
         assertNotNull(orderResponse);
-        verify(registerOrderOutputPort).save(request.getIdCustomer(), orderList);
-        verify(paymentLinkOutputPort).generate(Mockito.any());
+        verify(orderGateway).register(request.getIdCustomer(), orderList);
+        verify(paymentLinkGateway).generate(Mockito.any());
     }
 }

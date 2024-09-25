@@ -1,28 +1,26 @@
 package com.fiap.tc.application.usecases.order;
 
-import com.fiap.tc.core.application.ports.in.order.LoadOrderInputPort;
-import com.fiap.tc.core.application.ports.out.order.LoadOrderOutputPort;
-import com.fiap.tc.core.application.ports.out.payment.PaymentLinkOutputPort;
+import com.fiap.tc.application.gateways.IOrderGateway;
+import com.fiap.tc.application.gateways.IPaymentLinkGateway;
 import com.fiap.tc.domain.entities.Order;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
 @Service
-public class LoadOrderUseCase implements LoadOrderInputPort {
+public class LoadOrderUseCase {
 
-    private final LoadOrderOutputPort loadOrderOutputPort;
-    private final PaymentLinkOutputPort paymentLinkOutputPort;
+    private final IOrderGateway orderGateway;
+    private final IPaymentLinkGateway paymentLinkGateway;
 
-    public LoadOrderUseCase(LoadOrderOutputPort loadOrderOutputPort, PaymentLinkOutputPort paymentLinkOutputPort) {
-        this.loadOrderOutputPort = loadOrderOutputPort;
-        this.paymentLinkOutputPort = paymentLinkOutputPort;
+    public LoadOrderUseCase(IOrderGateway orderGateway, IPaymentLinkGateway paymentLinkGateway) {
+        this.orderGateway = orderGateway;
+        this.paymentLinkGateway = paymentLinkGateway;
     }
 
-    @Override
     public Order load(UUID uuid) {
-        var order = loadOrderOutputPort.load(uuid);
-        paymentLinkOutputPort.generate(order).ifPresent(order::setPaymentLink);
+        var order = orderGateway.load(uuid);
+        paymentLinkGateway.generate(order).ifPresent(order::setPaymentLink);
         return order;
     }
 }

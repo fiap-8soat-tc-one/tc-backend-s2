@@ -1,6 +1,6 @@
 package com.fiap.tc.application.usecases.category;
 
-import com.fiap.tc.application.gateways.CategoryGateway;
+import com.fiap.tc.application.gateways.ICategoryGateway;
 import com.fiap.tc.domain.entities.Category;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -9,9 +9,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class ListCategoriesUseCase {
 
-    private final CategoryGateway categoryGateway;
+    private final ICategoryGateway categoryGateway;
 
-    public ListCategoriesUseCase(CategoryGateway categoryGateway) {
+    public ListCategoriesUseCase(ICategoryGateway categoryGateway) {
         this.categoryGateway = categoryGateway;
     }
 

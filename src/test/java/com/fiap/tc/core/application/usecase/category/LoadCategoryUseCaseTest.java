@@ -1,7 +1,7 @@
 package com.fiap.tc.core.application.usecase.category;
 
 import br.com.six2six.fixturefactory.Fixture;
-import com.fiap.tc.application.gateways.CategoryGateway;
+import com.fiap.tc.application.gateways.ICategoryGateway;
 import com.fiap.tc.application.usecases.category.LoadCategoryUseCase;
 import com.fiap.tc.domain.entities.Category;
 import com.fiap.tc.fixture.FixtureTest;
@@ -22,7 +22,7 @@ import static org.mockito.Mockito.when;
 public class LoadCategoryUseCaseTest extends FixtureTest {
 
     @Mock
-    private CategoryGateway categoryGateway;
+    private ICategoryGateway categoryGateway;
 
     @InjectMocks
     private LoadCategoryUseCase loadCategoryUseCase;

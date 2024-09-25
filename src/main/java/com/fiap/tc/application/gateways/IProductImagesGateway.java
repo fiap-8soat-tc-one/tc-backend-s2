@@ -6,7 +6,7 @@ import com.fiap.tc.domain.entities.ProductImage;
 import java.util.List;
 import java.util.UUID;
 
-public interface ProductImagesGateway {
+public interface IProductImagesGateway {
 
     Product register(UUID idProduct, List<ProductImage> images);
 

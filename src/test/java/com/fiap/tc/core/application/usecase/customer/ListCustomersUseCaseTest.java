@@ -1,6 +1,6 @@
 package com.fiap.tc.core.application.usecase.customer;
 
-import com.fiap.tc.application.gateways.CustomerGateway;
+import com.fiap.tc.application.gateways.ICustomerGateway;
 import com.fiap.tc.application.usecases.customer.ListCustomersUseCase;
 import com.fiap.tc.fixture.FixtureTest;
 import org.junit.jupiter.api.Test;
@@ -16,7 +16,7 @@ import static org.mockito.Mockito.verify;
 public class ListCustomersUseCaseTest extends FixtureTest {
 
     @Mock
-    private CustomerGateway customerGateway;
+    private ICustomerGateway customerGateway;
 
     @InjectMocks
     private ListCustomersUseCase listCustomersUseCase;
