@@ -1,6 +1,6 @@
 package com.fiap.tc.application.usecases.product;
 
-import com.fiap.tc.application.gateways.IProductGateway;
+import com.fiap.tc.application.gateways.ProductGatewaySpec;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -8,9 +8,9 @@ import java.util.UUID;
 @Service
 public class DeleteProductUseCase {
 
-    private final IProductGateway productGateway;
+    private final ProductGatewaySpec productGateway;
 
-    public DeleteProductUseCase(IProductGateway productGateway) {
+    public DeleteProductUseCase(ProductGatewaySpec productGateway) {
         this.productGateway = productGateway;
     }
 

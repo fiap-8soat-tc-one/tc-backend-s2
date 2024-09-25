@@ -1,6 +1,6 @@
 package com.fiap.tc.infrastructure.gateways;
 
-import com.fiap.tc.application.gateways.IPaymentGateway;
+import com.fiap.tc.application.gateways.PaymentGatewaySpec;
 import com.fiap.tc.domain.entities.OrderPayment;
 import com.fiap.tc.domain.enums.PaymentStatus;
 import com.fiap.tc.domain.enums.PaymentType;
@@ -22,7 +22,7 @@ import java.util.UUID;
 import static java.lang.String.format;
 
 @Service
-public class PaymentGateway implements IPaymentGateway {
+public class PaymentGateway implements PaymentGatewaySpec {
     private final OrderPaymentRepository repository;
     private final OrderRepository orderRepository;
 

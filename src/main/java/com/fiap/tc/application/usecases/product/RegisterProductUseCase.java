@@ -1,15 +1,15 @@
 package com.fiap.tc.application.usecases.product;
 
-import com.fiap.tc.application.gateways.IProductGateway;
+import com.fiap.tc.application.gateways.ProductGatewaySpec;
 import com.fiap.tc.domain.entities.Product;
 import org.springframework.stereotype.Service;
 
 @Service
 public class RegisterProductUseCase {
 
-    private final IProductGateway productGateway;
+    private final ProductGatewaySpec productGateway;
 
-    public RegisterProductUseCase(IProductGateway productGateway) {
+    public RegisterProductUseCase(ProductGatewaySpec productGateway) {
         this.productGateway = productGateway;
     }
 

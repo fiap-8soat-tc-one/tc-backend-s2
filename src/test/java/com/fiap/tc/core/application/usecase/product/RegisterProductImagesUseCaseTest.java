@@ -1,7 +1,7 @@
 package com.fiap.tc.core.application.usecase.product;
 
 import br.com.six2six.fixturefactory.Fixture;
-import com.fiap.tc.application.gateways.IProductImagesGateway;
+import com.fiap.tc.application.gateways.ProductImagesGatewaySpec;
 import com.fiap.tc.application.usecases.product.RegisterProductImagesUseCase;
 import com.fiap.tc.domain.entities.Product;
 import com.fiap.tc.fixture.FixtureTest;
@@ -22,7 +22,7 @@ import static org.mockito.Mockito.when;
 public class RegisterProductImagesUseCaseTest extends FixtureTest {
 
     @Mock
-    private IProductImagesGateway productImagesGateway;
+    private ProductImagesGatewaySpec productImagesGateway;
 
     @InjectMocks
     private RegisterProductImagesUseCase registerProductImagesUseCase;

@@ -1,6 +1,6 @@
 package com.fiap.tc.application.usecases.order;
 
-import com.fiap.tc.application.gateways.IOrderGateway;
+import com.fiap.tc.application.gateways.OrderGatewaySpec;
 import com.fiap.tc.domain.entities.OrderList;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,9 +13,9 @@ import static com.fiap.tc.domain.enums.OrderStatus.*;
 @Service
 public class ListOrdersUseCase {
 
-    private final IOrderGateway orderGateway;
+    private final OrderGatewaySpec orderGateway;
 
-    public ListOrdersUseCase(IOrderGateway orderGateway) {
+    public ListOrdersUseCase(OrderGatewaySpec orderGateway) {
         this.orderGateway = orderGateway;
     }
 

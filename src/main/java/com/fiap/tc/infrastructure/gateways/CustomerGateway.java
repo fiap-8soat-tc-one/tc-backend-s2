@@ -1,6 +1,6 @@
 package com.fiap.tc.infrastructure.gateways;
 
-import com.fiap.tc.application.gateways.ICustomerGateway;
+import com.fiap.tc.application.gateways.CustomerGatewaySpec;
 import com.fiap.tc.domain.entities.Customer;
 import com.fiap.tc.domain.exceptions.NotFoundException;
 import com.fiap.tc.infrastructure.persistence.entities.CustomerEntity;
@@ -17,7 +17,7 @@ import static com.fiap.tc.infrastructure.gateways.mappers.base.MapperConstants.C
 import static java.lang.String.format;
 
 @Service
-public class CustomerGateway implements ICustomerGateway {
+public class CustomerGateway implements CustomerGatewaySpec {
     private final CustomerRepository repository;
 
     public CustomerGateway(CustomerRepository repository) {

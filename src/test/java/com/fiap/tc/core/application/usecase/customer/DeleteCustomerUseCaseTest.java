@@ -1,6 +1,6 @@
 package com.fiap.tc.core.application.usecase.customer;
 
-import com.fiap.tc.application.gateways.ICustomerGateway;
+import com.fiap.tc.application.gateways.CustomerGatewaySpec;
 import com.fiap.tc.application.usecases.customer.DeleteCustomerUseCase;
 import com.fiap.tc.fixture.FixtureTest;
 import org.junit.jupiter.api.Test;
@@ -17,7 +17,7 @@ public class DeleteCustomerUseCaseTest extends FixtureTest {
 
     public static final String DOCUMENT = "11111111111";
     @Mock
-    private ICustomerGateway customerGateway;
+    private CustomerGatewaySpec customerGateway;
 
     @InjectMocks
     private DeleteCustomerUseCase deleteCustomerUseCase;

@@ -7,7 +7,7 @@ import com.fiap.tc.domain.enums.PaymentType;
 import java.math.BigDecimal;
 import java.util.UUID;
 
-public interface IPaymentGateway {
+public interface PaymentGatewaySpec {
 
     OrderPayment load(UUID idOrder);
 

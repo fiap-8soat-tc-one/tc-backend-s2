@@ -1,8 +1,8 @@
 package com.fiap.tc.core.application.usecase.order;
 
 import br.com.six2six.fixturefactory.Fixture;
-import com.fiap.tc.application.gateways.IOrderGateway;
-import com.fiap.tc.application.gateways.IPaymentLinkGateway;
+import com.fiap.tc.application.gateways.OrderGatewaySpec;
+import com.fiap.tc.application.gateways.PaymentLinkGatewaySpec;
 import com.fiap.tc.application.usecases.order.LoadOrderUseCase;
 import com.fiap.tc.domain.enums.OrderStatus;
 import com.fiap.tc.fixture.FixtureTest;
@@ -28,10 +28,10 @@ public class LoadOrderUseCaseTest extends FixtureTest {
 
     public static final UUID UUID = java.util.UUID.randomUUID();
     @Mock
-    private IOrderGateway orderGateway;
+    private OrderGatewaySpec orderGateway;
 
     @Mock
-    private IPaymentLinkGateway paymentLinkGateway;
+    private PaymentLinkGatewaySpec paymentLinkGateway;
 
     @InjectMocks
     private LoadOrderUseCase loadOrderUseCase;

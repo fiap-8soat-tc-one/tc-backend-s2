@@ -1,7 +1,7 @@
 package com.fiap.tc.core.application.usecase.order;
 
 import br.com.six2six.fixturefactory.Fixture;
-import com.fiap.tc.application.gateways.IOrderGateway;
+import com.fiap.tc.application.gateways.OrderGatewaySpec;
 import com.fiap.tc.application.usecases.order.UpdateStatusOrderUseCase;
 import com.fiap.tc.fixture.FixtureTest;
 import com.fiap.tc.infrastructure.presentation.requests.OrderStatusRequest;
@@ -18,7 +18,7 @@ import static org.mockito.Mockito.verify;
 public class UpdateStatusOrderUseCaseTest extends FixtureTest {
 
     @Mock
-    private IOrderGateway orderGateway;
+    private OrderGatewaySpec orderGateway;
 
     @InjectMocks
     private UpdateStatusOrderUseCase updateStatusOrderUseCase;

@@ -1,6 +1,6 @@
 package com.fiap.tc.infrastructure.gateways;
 
-import com.fiap.tc.application.gateways.IProductImagesGateway;
+import com.fiap.tc.application.gateways.ProductImagesGatewaySpec;
 import com.fiap.tc.domain.entities.Product;
 import com.fiap.tc.domain.entities.ProductImage;
 import com.fiap.tc.domain.exceptions.NotFoundException;
@@ -25,7 +25,7 @@ import static java.lang.String.format;
 import static org.springframework.util.CollectionUtils.isEmpty;
 
 @Service
-public class ProductImagesGateway implements IProductImagesGateway {
+public class ProductImagesGateway implements ProductImagesGatewaySpec {
     private final ProductImageValidatorExecutor validator;
     private final ProductRepository productRepository;
     private final ProductImageRepository productImageRepository;

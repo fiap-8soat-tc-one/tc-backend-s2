@@ -1,7 +1,7 @@
 package com.fiap.tc.application.usecases.order;
 
-import com.fiap.tc.application.gateways.IOrderGateway;
-import com.fiap.tc.application.gateways.IPaymentLinkGateway;
+import com.fiap.tc.application.gateways.OrderGatewaySpec;
+import com.fiap.tc.application.gateways.PaymentLinkGatewaySpec;
 import com.fiap.tc.domain.entities.Order;
 import org.springframework.stereotype.Service;
 
@@ -10,10 +10,10 @@ import java.util.UUID;
 @Service
 public class LoadOrderUseCase {
 
-    private final IOrderGateway orderGateway;
-    private final IPaymentLinkGateway paymentLinkGateway;
+    private final OrderGatewaySpec orderGateway;
+    private final PaymentLinkGatewaySpec paymentLinkGateway;
 
-    public LoadOrderUseCase(IOrderGateway orderGateway, IPaymentLinkGateway paymentLinkGateway) {
+    public LoadOrderUseCase(OrderGatewaySpec orderGateway, PaymentLinkGatewaySpec paymentLinkGateway) {
         this.orderGateway = orderGateway;
         this.paymentLinkGateway = paymentLinkGateway;
     }

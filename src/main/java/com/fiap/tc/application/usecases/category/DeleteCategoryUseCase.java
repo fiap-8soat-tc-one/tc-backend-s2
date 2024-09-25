@@ -1,6 +1,6 @@
 package com.fiap.tc.application.usecases.category;
 
-import com.fiap.tc.application.gateways.ICategoryGateway;
+import com.fiap.tc.application.gateways.CategoryGatewaySpec;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -8,9 +8,9 @@ import java.util.UUID;
 @Service
 public class DeleteCategoryUseCase {
 
-    private final ICategoryGateway categoryGateway;
+    private final CategoryGatewaySpec categoryGateway;
 
-    public DeleteCategoryUseCase(ICategoryGateway categoryGateway) {
+    public DeleteCategoryUseCase(CategoryGatewaySpec categoryGateway) {
         this.categoryGateway = categoryGateway;
     }
 

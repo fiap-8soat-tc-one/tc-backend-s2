@@ -1,6 +1,6 @@
 package com.fiap.tc.core.application.usecase.order;
 
-import com.fiap.tc.application.gateways.IOrderGateway;
+import com.fiap.tc.application.gateways.OrderGatewaySpec;
 import com.fiap.tc.application.usecases.order.ListOrdersUseCase;
 import com.fiap.tc.fixture.FixtureTest;
 import org.junit.jupiter.api.Test;
@@ -20,7 +20,7 @@ import static org.mockito.Mockito.verify;
 public class ListOrdersUseCaseTest extends FixtureTest {
 
     @Mock
-    private IOrderGateway orderGateway;
+    private OrderGatewaySpec orderGateway;
 
     @InjectMocks
     private ListOrdersUseCase listOrdersUseCase;

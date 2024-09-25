@@ -1,8 +1,8 @@
 package com.fiap.tc.core.application.usecase.order;
 
 import br.com.six2six.fixturefactory.Fixture;
-import com.fiap.tc.application.gateways.IOrderGateway;
-import com.fiap.tc.application.gateways.IPaymentLinkGateway;
+import com.fiap.tc.application.gateways.OrderGatewaySpec;
+import com.fiap.tc.application.gateways.PaymentLinkGatewaySpec;
 import com.fiap.tc.application.usecases.order.RegisterOrderUseCase;
 import com.fiap.tc.fixture.FixtureTest;
 import com.fiap.tc.infrastructure.gateways.mappers.base.MapperConstants;
@@ -27,10 +27,10 @@ import static org.mockito.Mockito.when;
 public class RegisterOrderUseCaseTest extends FixtureTest {
 
     @Mock
-    private IOrderGateway orderGateway;
+    private OrderGatewaySpec orderGateway;
 
     @Mock
-    private IPaymentLinkGateway paymentLinkGateway;
+    private PaymentLinkGatewaySpec paymentLinkGateway;
 
     @InjectMocks
     private RegisterOrderUseCase registerOrderUseCase;

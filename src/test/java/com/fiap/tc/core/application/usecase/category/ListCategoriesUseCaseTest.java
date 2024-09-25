@@ -1,6 +1,6 @@
 package com.fiap.tc.core.application.usecase.category;
 
-import com.fiap.tc.application.gateways.ICategoryGateway;
+import com.fiap.tc.application.gateways.CategoryGatewaySpec;
 import com.fiap.tc.application.usecases.category.ListCategoriesUseCase;
 import com.fiap.tc.fixture.FixtureTest;
 import org.junit.jupiter.api.Test;
@@ -16,7 +16,7 @@ import static org.mockito.Mockito.verify;
 public class ListCategoriesUseCaseTest extends FixtureTest {
 
     @Mock
-    private ICategoryGateway categoryGateway;
+    private CategoryGatewaySpec categoryGateway;
 
     @InjectMocks
     private ListCategoriesUseCase listCategoriesUseCase;

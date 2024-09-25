@@ -1,7 +1,7 @@
 package com.fiap.tc.core.application.usecase.product;
 
 import br.com.six2six.fixturefactory.Fixture;
-import com.fiap.tc.application.gateways.IProductGateway;
+import com.fiap.tc.application.gateways.ProductGatewaySpec;
 import com.fiap.tc.application.usecases.product.LoadProductUseCase;
 import com.fiap.tc.domain.entities.Product;
 import com.fiap.tc.fixture.FixtureTest;
@@ -24,7 +24,7 @@ public class LoadProductUseCaseTest extends FixtureTest {
     public static final UUID ID_PRODUCT = UUID.randomUUID();
 
     @Mock
-    private IProductGateway productGateway;
+    private ProductGatewaySpec productGateway;
 
     @InjectMocks
     private LoadProductUseCase loadProductUseCase;

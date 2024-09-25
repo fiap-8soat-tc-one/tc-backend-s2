@@ -4,7 +4,7 @@ import com.fiap.tc.domain.entities.Order;
 
 import java.util.Optional;
 
-public interface IPaymentLinkGateway {
+public interface PaymentLinkGatewaySpec {
     Optional<String> generate(Order order);
 
 }

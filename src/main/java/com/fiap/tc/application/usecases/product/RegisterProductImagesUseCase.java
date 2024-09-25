@@ -1,6 +1,6 @@
 package com.fiap.tc.application.usecases.product;
 
-import com.fiap.tc.application.gateways.IProductImagesGateway;
+import com.fiap.tc.application.gateways.ProductImagesGatewaySpec;
 import com.fiap.tc.domain.entities.Product;
 import com.fiap.tc.domain.entities.ProductImage;
 import org.springframework.stereotype.Service;
@@ -10,9 +10,9 @@ import java.util.UUID;
 
 @Service
 public class RegisterProductImagesUseCase {
-    private final IProductImagesGateway productImagesGateway;
+    private final ProductImagesGatewaySpec productImagesGateway;
 
-    public RegisterProductImagesUseCase(IProductImagesGateway productImagesGateway) {
+    public RegisterProductImagesUseCase(ProductImagesGatewaySpec productImagesGateway) {
         this.productImagesGateway = productImagesGateway;
     }
 

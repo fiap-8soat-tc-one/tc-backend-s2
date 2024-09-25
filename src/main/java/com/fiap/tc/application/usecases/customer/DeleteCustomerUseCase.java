@@ -1,6 +1,6 @@
 package com.fiap.tc.application.usecases.customer;
 
-import com.fiap.tc.application.gateways.ICustomerGateway;
+import com.fiap.tc.application.gateways.CustomerGatewaySpec;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class DeleteCustomerUseCase {
 
-    private final ICustomerGateway customerGateway;
+    private final CustomerGatewaySpec customerGateway;
 
-    public DeleteCustomerUseCase(ICustomerGateway customerGateway) {
+    public DeleteCustomerUseCase(CustomerGatewaySpec customerGateway) {
         this.customerGateway = customerGateway;
     }
 

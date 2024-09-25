@@ -1,7 +1,7 @@
 package com.fiap.tc.core.application.usecase.product;
 
 import br.com.six2six.fixturefactory.Fixture;
-import com.fiap.tc.application.gateways.IProductImagesGateway;
+import com.fiap.tc.application.gateways.ProductImagesGatewaySpec;
 import com.fiap.tc.application.usecases.product.DeleteProductImagesUseCase;
 import com.fiap.tc.fixture.FixtureTest;
 import com.fiap.tc.infrastructure.presentation.requests.DeleteProductImagesRequest;
@@ -17,7 +17,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 public class DeleteProductImagesUseCaseTest extends FixtureTest {
 
     @Mock
-    private IProductImagesGateway productImagesGateway;
+    private ProductImagesGatewaySpec productImagesGateway;
 
     @InjectMocks
     private DeleteProductImagesUseCase deleteProductImagesUseCase;
