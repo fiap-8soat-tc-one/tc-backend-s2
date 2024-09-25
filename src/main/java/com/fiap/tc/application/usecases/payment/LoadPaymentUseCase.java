@@ -1,27 +1,22 @@
 package com.fiap.tc.application.usecases.payment;
 
-import com.fiap.tc.core.application.ports.in.payment.LoadPaymentInputPort;
-import com.fiap.tc.core.application.ports.out.payment.LoadPaymentOutputPort;
 import com.fiap.tc.domain.entities.OrderPayment;
-import lombok.extern.slf4j.Slf4j;
+import com.fiap.tc.infrastructure.gateways.PaymentGateway;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
 @Service
-@Slf4j
-public class LoadPaymentUseCase implements LoadPaymentInputPort {
+public class LoadPaymentUseCase {
 
-    private final LoadPaymentOutputPort loadPaymentOutputPort;
+    private final PaymentGateway paymentGateway;
 
-    public LoadPaymentUseCase(LoadPaymentOutputPort loadPaymentOutputPort) {
-        this.loadPaymentOutputPort = loadPaymentOutputPort;
+    public LoadPaymentUseCase(PaymentGateway paymentGateway) {
+        this.paymentGateway = paymentGateway;
     }
 
-
-    @Override
     public OrderPayment load(UUID orderId) {
-        return loadPaymentOutputPort.load(orderId);
+        return paymentGateway.load(orderId);
     }
 }
 

@@ -1,28 +1,27 @@
 package com.fiap.tc.application.usecases.payment;
 
-import com.fiap.tc.core.application.ports.in.payment.RegisterPaymentInputPort;
-import com.fiap.tc.core.application.ports.out.order.UpdateStatusOrderOutputPort;
-import com.fiap.tc.core.application.ports.out.payment.RegisterPaymentOutputPort;
 import com.fiap.tc.domain.enums.PaymentStatus;
 import com.fiap.tc.domain.enums.PaymentType;
+import com.fiap.tc.infrastructure.gateways.OrderGateway;
+import com.fiap.tc.infrastructure.gateways.PaymentGateway;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 
 @Service
-public class RegisterPaymentUseCase implements RegisterPaymentInputPort {
-    private final RegisterPaymentOutputPort registerPaymentOutputPort;
-    private final UpdateStatusOrderOutputPort updateStatusOrderOutputPort;
+public class RegisterPaymentUseCase {
+    private final PaymentGateway paymentGateway;
+    private final OrderGateway orderGateway;
 
-    public RegisterPaymentUseCase(RegisterPaymentOutputPort registerPaymentOutputPort,
-                                  UpdateStatusOrderOutputPort updateStatusOrderOutputPort) {
-        this.registerPaymentOutputPort = registerPaymentOutputPort;
-        this.updateStatusOrderOutputPort = updateStatusOrderOutputPort;
+    public RegisterPaymentUseCase(PaymentGateway paymentGateway, OrderGateway orderGateway) {
+        this.paymentGateway = paymentGateway;
+        this.orderGateway = orderGateway;
     }
 
-    @Override
-    public void register(String transactionNumber, String transactionMessage, String transactionDocument, PaymentStatus result, PaymentType type, BigDecimal total) {
-        var orderPayment = registerPaymentOutputPort.saveOrUpdate(transactionNumber, transactionMessage, transactionDocument, result, type, total);
-        updateStatusOrderOutputPort.update(orderPayment.getId(), orderPayment.getStatus().getOrderStatus());
+    public void register(String transactionNumber, String transactionMessage, String transactionDocument,
+                         PaymentStatus result, PaymentType type, BigDecimal total) {
+        var orderPayment = paymentGateway.register(transactionNumber, transactionMessage, transactionDocument,
+                result, type, total);
+        orderGateway.updateStatus(orderPayment.getId(), orderPayment.getStatus().getOrderStatus());
     }
 }
