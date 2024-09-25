@@ -1,22 +1,20 @@
 package com.fiap.tc.application.usecases.product;
 
-import com.fiap.tc.core.application.ports.in.product.DeleteProductInputPort;
-import com.fiap.tc.core.application.ports.out.product.DeleteProductOutputPort;
+import com.fiap.tc.application.gateways.IProductGateway;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
 @Service
-public class DeleteProductUseCase implements DeleteProductInputPort {
+public class DeleteProductUseCase {
 
-    private final DeleteProductOutputPort deleteProductOutputPort;
+    private final IProductGateway productGateway;
 
-    public DeleteProductUseCase(DeleteProductOutputPort deleteProductOutputPort) {
-        this.deleteProductOutputPort = deleteProductOutputPort;
+    public DeleteProductUseCase(IProductGateway productGateway) {
+        this.productGateway = productGateway;
     }
 
-    @Override
     public void delete(UUID idProduct) {
-        deleteProductOutputPort.delete(idProduct);
+        productGateway.delete(idProduct);
     }
 }

@@ -1,20 +1,18 @@
 package com.fiap.tc.application.usecases.product;
 
-import com.fiap.tc.core.application.ports.in.product.UpdateProductInputPort;
-import com.fiap.tc.core.application.ports.out.product.UpdateProductOutputPort;
+import com.fiap.tc.application.gateways.IProductGateway;
 import com.fiap.tc.domain.entities.Product;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UpdateProductUseCase implements UpdateProductInputPort {
-    private final UpdateProductOutputPort updateProductNameOutputPort;
+public class UpdateProductUseCase {
+    private final IProductGateway productGateway;
 
-    public UpdateProductUseCase(UpdateProductOutputPort updateProductNameOutputPort) {
-        this.updateProductNameOutputPort = updateProductNameOutputPort;
+    public UpdateProductUseCase(IProductGateway productGateway) {
+        this.productGateway = productGateway;
     }
 
-    @Override
     public Product update(Product product) {
-        return updateProductNameOutputPort.update(product);
+        return productGateway.update(product);
     }
 }

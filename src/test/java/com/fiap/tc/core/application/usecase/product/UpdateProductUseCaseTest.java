@@ -1,11 +1,11 @@
 package com.fiap.tc.core.application.usecase.product;
 
 import br.com.six2six.fixturefactory.Fixture;
+import com.fiap.tc.application.gateways.IProductGateway;
 import com.fiap.tc.application.usecases.product.UpdateProductUseCase;
 import com.fiap.tc.domain.entities.Product;
-import com.fiap.tc.infrastructure.presentation.requests.ProductRequest;
-import com.fiap.tc.core.application.ports.out.product.UpdateProductOutputPort;
 import com.fiap.tc.fixture.FixtureTest;
+import com.fiap.tc.infrastructure.presentation.requests.ProductRequest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -24,7 +24,7 @@ public class UpdateProductUseCaseTest extends FixtureTest {
 
     public static final UUID ID_PRODUCT = UUID.randomUUID();
     @Mock
-    private UpdateProductOutputPort updateProductOutputPort;
+    private IProductGateway productGateway;
 
     @InjectMocks
     private UpdateProductUseCase updateProductUseCase;
@@ -41,9 +41,9 @@ public class UpdateProductUseCaseTest extends FixtureTest {
 
     @Test
     public void updateProductTest() {
-        when(updateProductOutputPort.update(Mockito.any())).thenReturn(product);
+        when(productGateway.update(Mockito.any())).thenReturn(product);
         updateProductUseCase.update(product);
-        verify(updateProductOutputPort).update(Mockito.any());
+        verify(productGateway).update(Mockito.any());
     }
 
 

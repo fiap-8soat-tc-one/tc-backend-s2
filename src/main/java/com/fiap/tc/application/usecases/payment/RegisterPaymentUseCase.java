@@ -1,5 +1,7 @@
 package com.fiap.tc.application.usecases.payment;
 
+import com.fiap.tc.application.gateways.IOrderGateway;
+import com.fiap.tc.application.gateways.IPaymentGateway;
 import com.fiap.tc.domain.enums.PaymentStatus;
 import com.fiap.tc.domain.enums.PaymentType;
 import com.fiap.tc.infrastructure.gateways.OrderGateway;
@@ -10,8 +12,8 @@ import java.math.BigDecimal;
 
 @Service
 public class RegisterPaymentUseCase {
-    private final PaymentGateway paymentGateway;
-    private final OrderGateway orderGateway;
+    private final IPaymentGateway paymentGateway;
+    private final IOrderGateway orderGateway;
 
     public RegisterPaymentUseCase(PaymentGateway paymentGateway, OrderGateway orderGateway) {
         this.paymentGateway = paymentGateway;

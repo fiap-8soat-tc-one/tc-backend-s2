@@ -1,22 +1,20 @@
 package com.fiap.tc.application.usecases.product;
 
-import com.fiap.tc.core.application.ports.in.product.LoadProductInputPort;
+import com.fiap.tc.application.gateways.IProductGateway;
 import com.fiap.tc.domain.entities.Product;
-import com.fiap.tc.core.application.ports.out.product.LoadProductOutputPort;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
 @Service
-public class LoadProductUseCase implements LoadProductInputPort {
-    private final LoadProductOutputPort loadProductOutputPort;
+public class LoadProductUseCase {
+    private final IProductGateway productGateway;
 
-    public LoadProductUseCase(LoadProductOutputPort loadProductOutputPort) {
-        this.loadProductOutputPort = loadProductOutputPort;
+    public LoadProductUseCase(IProductGateway productGateway) {
+        this.productGateway = productGateway;
     }
 
-    @Override
     public Product load(UUID idProduct) {
-        return loadProductOutputPort.load(idProduct);
+        return productGateway.load(idProduct);
     }
 }

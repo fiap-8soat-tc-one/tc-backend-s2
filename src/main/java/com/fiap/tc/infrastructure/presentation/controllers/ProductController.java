@@ -1,11 +1,11 @@
 package com.fiap.tc.infrastructure.presentation.controllers;
 
+import com.fiap.tc.application.usecases.product.*;
 import com.fiap.tc.infrastructure.presentation.URLMapping;
 import com.fiap.tc.infrastructure.presentation.mappers.base.MapperConstants;
 import com.fiap.tc.infrastructure.presentation.requests.ProductRequest;
 import com.fiap.tc.infrastructure.presentation.response.DefaultResponse;
 import com.fiap.tc.infrastructure.presentation.response.ProductResponse;
-import com.fiap.tc.core.application.ports.in.product.*;
 import io.swagger.annotations.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -26,22 +26,22 @@ import static org.springframework.http.ResponseEntity.ok;
 @Api(tags = "Products API V1", produces = APPLICATION_JSON_VALUE, consumes = APPLICATION_JSON_VALUE)
 public class ProductController {
 
-    private final RegisterProductInputPort registerProductInputPort;
-    private final UpdateProductInputPort updateProductInputPort;
-    private final LoadProductInputPort loadProductInputPort;
-    private final ListProductsByCategoryInputPort listProductsByCategoryInputPort;
-    private final DeleteProductInputPort deleteProductInputPort;
+    private final RegisterProductUseCase registerProductUseCase;
+    private final UpdateProductUseCase updateProductUseCase;
+    private final LoadProductUseCase loadProductUseCase;
+    private final ListProductsByCategoryUseCase listProductsByCategoryUseCase;
+    private final DeleteProductUseCase deleteProductUseCase;
 
-    public ProductController(RegisterProductInputPort registerProductInputPort,
-                             UpdateProductInputPort updateProductInputPort,
-                             LoadProductInputPort loadProductInputPort,
-                             ListProductsByCategoryInputPort listProductsByCategoryInputPort,
-                             DeleteProductInputPort deleteProductInputPort) {
-        this.registerProductInputPort = registerProductInputPort;
-        this.updateProductInputPort = updateProductInputPort;
-        this.loadProductInputPort = loadProductInputPort;
-        this.listProductsByCategoryInputPort = listProductsByCategoryInputPort;
-        this.deleteProductInputPort = deleteProductInputPort;
+    public ProductController(RegisterProductUseCase registerProductUseCase,
+                             UpdateProductUseCase updateProductUseCase,
+                             LoadProductUseCase loadProductUseCase,
+                             ListProductsByCategoryUseCase listProductsByCategoryUseCase,
+                             DeleteProductUseCase deleteProductUseCase) {
+        this.registerProductUseCase = registerProductUseCase;
+        this.updateProductUseCase = updateProductUseCase;
+        this.loadProductUseCase = loadProductUseCase;
+        this.listProductsByCategoryUseCase = listProductsByCategoryUseCase;
+        this.deleteProductUseCase = deleteProductUseCase;
     }
 
     @ApiOperation(value = "list of products by category", notes = "(Public Endpoint) This endpoint is responsible for listing the products by category registered in the snack bar's system.")
@@ -54,7 +54,7 @@ public class ProductController {
     public ResponseEntity<Page<ProductResponse>> list(
             @ApiParam(value = "Category Id of the products to be retrieved", required = true) @PathVariable UUID categoryId,
             @ApiParam(required = true, value = "Pagination information") Pageable pageable) {
-        return ok(listProductsByCategoryInputPort.list(categoryId, pageable).map(PRODUCT_MAPPER::fromDomain));
+        return ok(listProductsByCategoryUseCase.list(categoryId, pageable).map(PRODUCT_MAPPER::fromDomain));
     }
 
     @ApiOperation(value = "create/update product", notes = "(Private Endpoint) This endpoint is responsible for creating or modifying a product. It is used on the administrative screen for managing categories and products.")
@@ -67,7 +67,7 @@ public class ProductController {
     @PreAuthorize("hasAuthority('REGISTER_PRODUCTS')")
     public ResponseEntity<ProductResponse> saveOrUpdate(
             @ApiParam(value = "Product details for saving/updating", required = true) @RequestBody @Valid ProductRequest productRequest) {
-        return ok(PRODUCT_MAPPER.fromDomain(registerProductInputPort.register(PRODUCT_REQUEST_MAPPER.toDomain(productRequest))));
+        return ok(PRODUCT_MAPPER.fromDomain(registerProductUseCase.register(PRODUCT_REQUEST_MAPPER.toDomain(productRequest))));
     }
 
     @ApiOperation(value = "update product by id", notes = "(Private Endpoint) This endpoint is responsible for update a product. It is used on the administrative screen for managing categories and products.")
@@ -84,7 +84,7 @@ public class ProductController {
 
         var product = MapperConstants.PRODUCT_REQUEST_MAPPER.toDomain(request);
         product.setId(id);
-        return ok(PRODUCT_MAPPER.fromDomain(updateProductInputPort.update(product)));
+        return ok(PRODUCT_MAPPER.fromDomain(updateProductUseCase.update(product)));
     }
 
     @ApiOperation(value = "get product by id", notes = "(Private Endpoint) This endpoint is responsible for fetching a product through its unique identifier. It is used on the administrative screen to assist in product creation.")
@@ -97,7 +97,7 @@ public class ProductController {
     @PreAuthorize("hasAuthority('SEARCH_PRODUCTS')")
     public ResponseEntity<ProductResponse> get(
             @ApiParam(value = "ID of the product to be retrieved", required = true) @PathVariable UUID id) {
-        return ok(PRODUCT_MAPPER.fromDomain(loadProductInputPort.load(id)));
+        return ok(PRODUCT_MAPPER.fromDomain(loadProductUseCase.load(id)));
     }
 
     @ApiOperation(value = "delete product by id", notes = "(Private Endpoint) This endpoint is responsible for removing a product through its unique identifier. It is used on the administrative screen for managing categories and products.")
@@ -110,7 +110,7 @@ public class ProductController {
     @PreAuthorize("hasAuthority('DELETE_PRODUCTS')")
     public ResponseEntity<DefaultResponse> delete(
             @ApiParam(value = "ID of the product to be deleted", required = true) @PathVariable UUID id) {
-        deleteProductInputPort.delete(id);
+        deleteProductUseCase.delete(id);
         return ok(new DefaultResponse());
     }
 }

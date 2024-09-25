@@ -1,21 +1,19 @@
 package com.fiap.tc.application.usecases.product;
 
-import com.fiap.tc.core.application.ports.in.product.RegisterProductInputPort;
-import com.fiap.tc.core.application.ports.out.product.RegisterProductOutputPort;
+import com.fiap.tc.application.gateways.IProductGateway;
 import com.fiap.tc.domain.entities.Product;
 import org.springframework.stereotype.Service;
 
 @Service
-public class RegisterProductUseCase implements RegisterProductInputPort {
+public class RegisterProductUseCase {
 
-    private final RegisterProductOutputPort registerProductOutputPort;
+    private final IProductGateway productGateway;
 
-    public RegisterProductUseCase(RegisterProductOutputPort registerProductOutputPort) {
-        this.registerProductOutputPort = registerProductOutputPort;
+    public RegisterProductUseCase(IProductGateway productGateway) {
+        this.productGateway = productGateway;
     }
 
-    @Override
     public Product register(Product product) {
-        return registerProductOutputPort.saveOrUpdate(product);
+        return productGateway.register(product);
     }
 }

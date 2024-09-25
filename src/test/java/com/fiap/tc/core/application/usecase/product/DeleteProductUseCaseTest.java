@@ -1,7 +1,7 @@
 package com.fiap.tc.core.application.usecase.product;
 
+import com.fiap.tc.application.gateways.IProductGateway;
 import com.fiap.tc.application.usecases.product.DeleteProductUseCase;
-import com.fiap.tc.core.application.ports.out.product.DeleteProductOutputPort;
 import com.fiap.tc.fixture.FixtureTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,7 +17,7 @@ public class DeleteProductUseCaseTest extends FixtureTest {
 
     public static final UUID ID_PRODUCT = UUID.randomUUID();
     @Mock
-    private DeleteProductOutputPort deleteProductOutputPort;
+    private IProductGateway productGateway;
 
     @InjectMocks
     private DeleteProductUseCase deleteProductUseCase;
@@ -25,7 +25,7 @@ public class DeleteProductUseCaseTest extends FixtureTest {
     @Test
     public void deleteProductTest() {
         deleteProductUseCase.delete(ID_PRODUCT);
-        Mockito.verify(deleteProductOutputPort).delete(ID_PRODUCT);
+        Mockito.verify(productGateway).delete(ID_PRODUCT);
     }
 
 

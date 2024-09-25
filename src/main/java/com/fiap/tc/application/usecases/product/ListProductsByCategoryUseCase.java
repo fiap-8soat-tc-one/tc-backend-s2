@@ -1,8 +1,7 @@
 package com.fiap.tc.application.usecases.product;
 
-import com.fiap.tc.core.application.ports.in.product.ListProductsByCategoryInputPort;
+import com.fiap.tc.application.gateways.IProductGateway;
 import com.fiap.tc.domain.entities.Product;
-import com.fiap.tc.core.application.ports.out.product.ListProductsByCategoryOutputPort;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -10,16 +9,15 @@ import org.springframework.stereotype.Service;
 import java.util.UUID;
 
 @Service
-public class ListProductsByCategoryUseCase implements ListProductsByCategoryInputPort {
+public class ListProductsByCategoryUseCase {
 
-    private final ListProductsByCategoryOutputPort listProductsByCategoryOutputPort;
+    private final IProductGateway productGateway;
 
-    public ListProductsByCategoryUseCase(ListProductsByCategoryOutputPort listProductsByCategoryOutputPort) {
-        this.listProductsByCategoryOutputPort = listProductsByCategoryOutputPort;
+    public ListProductsByCategoryUseCase(IProductGateway productGateway) {
+        this.productGateway = productGateway;
     }
 
-    @Override
     public Page<Product> list(UUID idCategory, Pageable pageable) {
-        return listProductsByCategoryOutputPort.list(idCategory, pageable);
+        return productGateway.list(idCategory, pageable);
     }
 }

@@ -1,13 +1,13 @@
 package com.fiap.tc.infrastructure.presentation.controllers;
 
+import com.fiap.tc.application.usecases.product.DeleteProductImagesUseCase;
+import com.fiap.tc.application.usecases.product.RegisterProductImagesUseCase;
 import com.fiap.tc.infrastructure.presentation.URLMapping;
 import com.fiap.tc.infrastructure.presentation.requests.DeleteProductImagesRequest;
 import com.fiap.tc.infrastructure.presentation.requests.RegisterProductImagesRequest;
 import com.fiap.tc.infrastructure.presentation.response.DefaultResponse;
 import com.fiap.tc.infrastructure.presentation.response.ProductImageResponse;
 import com.fiap.tc.infrastructure.presentation.response.ProductResponse;
-import com.fiap.tc.core.application.ports.in.product.DeleteProductImagesInputPort;
-import com.fiap.tc.core.application.ports.in.product.RegisterProductImagesInputPort;
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -25,13 +25,13 @@ import static org.springframework.http.ResponseEntity.ok;
 @Api(tags = "Products Images API V1", produces = APPLICATION_JSON_VALUE, consumes = APPLICATION_JSON_VALUE)
 public class ProductImagesController {
 
-    private final RegisterProductImagesInputPort registerProductImagesInputPort;
-    private final DeleteProductImagesInputPort deleteProductImagesInputPort;
+    private final RegisterProductImagesUseCase registerProductImagesUseCase;
+    private final DeleteProductImagesUseCase deleteProductImagesUseCase;
 
-    public ProductImagesController(RegisterProductImagesInputPort registerProductImagesInputPort,
-                                   DeleteProductImagesInputPort deleteProductImagesInputPort) {
-        this.registerProductImagesInputPort = registerProductImagesInputPort;
-        this.deleteProductImagesInputPort = deleteProductImagesInputPort;
+    public ProductImagesController(RegisterProductImagesUseCase registerProductImagesUseCase,
+                                   DeleteProductImagesUseCase deleteProductImagesUseCase) {
+        this.registerProductImagesUseCase = registerProductImagesUseCase;
+        this.deleteProductImagesUseCase = deleteProductImagesUseCase;
     }
 
     @ApiOperation(value = "upload product images", notes = "(Private Endpoint) This endpoint is responsible for upload product images. It is used on the administrative screen for managing categories and products.")
@@ -45,7 +45,7 @@ public class ProductImagesController {
     public ResponseEntity<ProductResponse> upload(
             @ApiParam(value = "Product Image details for upload", required = true) @RequestBody @Valid RegisterProductImagesRequest request) {
         var productImages = request.getImages().stream().map(PRODUCT_IMAGE_REQUEST_MAPPER::toEntity).toList();
-        return ok(PRODUCT_MAPPER.fromDomain(registerProductImagesInputPort.register(request.getIdProduct(), productImages)));
+        return ok(PRODUCT_MAPPER.fromDomain(registerProductImagesUseCase.register(request.getIdProduct(), productImages)));
     }
 
     @ApiOperation(value = "delete product images by ids", notes = "(Private Endpoint) This endpoint is responsible for removing images of a product. It is used on the administrative screen for managing categories and products.")
@@ -59,7 +59,7 @@ public class ProductImagesController {
     public ResponseEntity<DefaultResponse> delete(
             @ApiParam(value = "Product Image Ids for delete", required = true)
             @RequestBody @Valid DeleteProductImagesRequest request) {
-        deleteProductImagesInputPort.delete(request.getIdProduct(), request.getImages());
+        deleteProductImagesUseCase.delete(request.getIdProduct(), request.getImages());
         return ok(new DefaultResponse());
     }
 }
