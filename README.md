@@ -1,5 +1,6 @@
-# Tech Challenge Backend API
+# Tech Challenge Backend API - Fase 2
 
+[![CodeQL Advanced](https://github.com/fiap-8soat-tc-one/tc-backend-s2/actions/workflows/codeql.yml/badge.svg)](https://github.com/fiap-8soat-tc-one/tc-backend-s2/actions/workflows/codeql.yml) [![Publish Docker image](https://github.com/fiap-8soat-tc-one/tc-backend-s2/actions/workflows/github-pipeline.yml/badge.svg)](https://github.com/fiap-8soat-tc-one/tc-backend-s2/actions/workflows/github-pipeline.yml) [![SonarQube Cloud](https://github.com/fiap-8soat-tc-one/tc-backend-s2/actions/workflows/sonarcloud.yml/badge.svg)](https://github.com/fiap-8soat-tc-one/tc-backend-s2/actions/workflows/sonarcloud.yml)
 ## O Desafio :triangular_flag_on_post:
 
 Uma lanchonete de bairro está em expansão devido ao seu grande sucesso. Entretanto, com essa expansão e a ausência de um sistema de controle de pedidos, o atendimento aos clientes pode tornar-se caótico e confuso. Por exemplo, imagine que um cliente faça um pedido complexo, como um hambúrguer personalizado com ingredientes específicos, acompanhado de batatas fritas e uma bebida. O atendente pode anotar o pedido em um papel e entregá-lo à cozinha, mas não há garantia de que o pedido será preparado corretamente.
